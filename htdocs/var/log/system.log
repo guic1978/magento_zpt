@@ -1,0 +1,105 @@
+2015-08-03T14:17:33+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-03T14:17:33+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T14:17:33+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T15:28:39+00:00 ERR (3): Warning: file_get_contents(/opt/bitnami/apps/magento/htdocs/../conf/beetailer_api_key.txt): failed to open stream: No such file or directory  in /opt/bitnami/apps/magento/htdocs/app/code/community/Beecoder/Beeshopy/controllers/AdminController.php on line 34
+2015-08-03T16:21:10+00:00 DEBUG (7): HEADERS ALREADY SENT: <pre>[0] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Response/Http.php:52
+[1] /opt/bitnami/apps/magento/htdocs/lib/Zend/Controller/Response/Abstract.php:768
+[2] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Response/Http.php:84
+[3] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php:184
+[4] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php:365
+[5] /opt/bitnami/apps/magento/htdocs/app/Mage.php:684
+[6] /opt/bitnami/apps/magento/htdocs/index.php:83
+</pre>
+2015-08-03T16:21:15+00:00 DEBUG (7): HEADERS ALREADY SENT: <pre>[0] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Response/Http.php:52
+[1] /opt/bitnami/apps/magento/htdocs/lib/Zend/Controller/Response/Abstract.php:768
+[2] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Response/Http.php:84
+[3] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php:184
+[4] /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php:365
+[5] /opt/bitnami/apps/magento/htdocs/app/Mage.php:684
+[6] /opt/bitnami/apps/magento/htdocs/index.php:83
+</pre>
+2015-08-03T18:09:17+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-03T18:09:17+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T18:09:17+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T18:11:56+00:00 ERR (3): Notice: Undefined index: dob  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/controllers/IndexController.php on line 708
+2015-08-03T18:11:56+00:00 ERR (3): Notice: Undefined index: taxvat  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/controllers/IndexController.php on line 718
+2015-08-03T18:11:56+00:00 ERR (3): Notice: Undefined index: gender  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/controllers/IndexController.php on line 720
+2015-08-03T19:43:18+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-03T19:43:18+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T19:43:18+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T19:43:45+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T19:43:45+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T19:59:08+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T19:59:08+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T19:59:26+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T19:59:26+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:01:05+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:01:05+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:11:27+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:11:27+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:23:19+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:23:19+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:23:44+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/controllers/IndexController.php on line 414
+2015-08-03T20:23:44+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Wishlist/Model/Observer.php on line 68
+2015-08-03T20:23:44+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Checkout/Model/Cart.php on line 396
+2015-08-03T20:23:46+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:23:46+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:23:54+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/controllers/IndexController.php on line 414
+2015-08-03T20:23:54+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Wishlist/Model/Observer.php on line 68
+2015-08-03T20:23:54+00:00 ERR (3): Warning: Invalid argument supplied for foreach()  in /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Checkout/Model/Cart.php on line 396
+2015-08-03T20:23:55+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:23:55+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T20:25:21+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T20:25:21+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T22:50:39+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-03T22:50:39+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T22:50:39+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T22:51:43+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T22:51:43+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:12:12+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:12:12+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:15:24+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:15:24+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:19:11+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:19:11+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:21:57+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:21:57+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:27:52+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:27:52+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:28:24+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:28:24+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:34:42+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:34:42+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:38:17+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:38:17+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:56:22+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-03T23:56:22+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:56:22+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-03T23:58:57+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-03T23:58:57+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T00:09:44+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T00:09:44+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T00:44:04+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T00:44:04+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T10:05:40+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-04T10:05:40+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T10:05:40+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T10:05:40+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:05:40+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239
+2015-08-04T10:05:41+00:00 ERR (3): Notice: Undefined variable: customer  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 82
+2015-08-04T10:05:41+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T10:05:41+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T10:05:41+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:05:41+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239
+2015-08-04T10:06:27+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T10:06:27+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T10:06:27+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:06:27+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239
+2015-08-04T10:07:36+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:07:36+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239
+2015-08-04T10:22:12+00:00 ERR (3): Notice: Undefined variable: region_select  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Onestepcheckout/Block/Checkout/Onepage/Billing.php on line 85
+2015-08-04T10:22:12+00:00 ERR (3): Notice: Undefined index: fullname  in /opt/bitnami/apps/magento/htdocs/app/design/frontend/base/default/template/MOIP/onestepcheckout/daskboard/onepage/billing/billingform.phtml on line 4
+2015-08-04T10:22:12+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:22:12+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239
+2015-08-04T10:22:27+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 202
+2015-08-04T10:22:27+00:00 ERR (3): Warning: Division by zero  in /opt/bitnami/apps/magento/htdocs/app/code/local/MOIP/Transparente/Model/Api.php on line 239

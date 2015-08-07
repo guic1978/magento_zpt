@@ -1,0 +1,53 @@
+li.cofre {
+	width: 30%;
+float: left;
+border: 1px solid #ccc;
+border-radius: 5px;
+margin-right: 2%;
+}
+.image_cofre {
+	width: 30%;
+	float: left;
+	margin-right: 5%;
+	margin-top: 5px;
+}
+.image_cofre > img{
+	width: 70%;
+	float: left;
+	padding: 10%;
+	padding-top: 5px;
+}
+.cofre_number {
+	padding-top: 5px;
+	width: 55%;
+	float: left;
+	border-radius: 3px 0 0 3px;
+}
+
+.radio_cofre {
+	float: left;
+	width: 10%;
+	background: #ccc;
+	min-height: 50px
+}
+input#cartao_salvo {
+	margin-top: 20px;
+	margin-left: 6px;
+}
+ul.form-list-cofre {
+width: 100%;
+float: left;
+}
+input#cartao_remove {
+margin: 16%;
+float: left;
+min-height: 40px;
+}
+.action_remove {
+width: 100%;
+text-align: right;
+border-top: 1px solid #ccc;
+margin-top: 10px;
+padding-top: 10px;
+float: left;
+}

@@ -1,0 +1,40 @@
+<?php $session = Mage::getSingleton('checkout/session'); ?>
+<?php $result_decode = $session->getResult_decode(); ?>
+<?php $client_array = $session->getClient_array(); ?>
+<?php $pgtoArraya = $session->getPgtoarry(); ?>
+<?php $pgtoArray = $this->getOrder_dados($client_array); ?>
+<?php if(Mage::getSingleton('customer/session')->isLoggedIn()) {   $customerData = Mage::getSingleton('customer/session')->getCustomer();} ?>
+<?php if (!Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
+<script type="text/javascript">
+//<![CDATA[
+    var _gaq = _gaq || [];
+  	_gaq.push(['_setAccount', '<?php echo  Mage::getStoreConfig("moipall/google/idgoogle") ?>']);
+    <?php echo $this->getTrackingTransparente($client_array);  ?>
+//]]>
+</script>
+<?php endif; ?>
+<?php $order = Mage::getModel('sales/order')->load($pgtoArray['id_transacao']); ?>
+<?php $this->getSaveDate($pgtoArray['id_transacao'], $result_decode, $customerData, $pgtoArraya, $client_array); ?>
+
+<script type="text/javascript" charset="ISO-8859-1" src="<?php echo $this->getUrlAmbiente(); ?>transparente/MoipWidget-v2.js" onerror="erro_mail('erro caiu o transparente widget')" ></script>
+<div id="MoipWidget" data-token="<?php echo $result_decode['token'] ?>" callback-method-error="erroValidacao" callback-method-success="sucesso"></div>
+
+<div class="grid12-12">
+	<h3>Seu pedido foi enviado com sucesso, <strong><?php echo $client_array['pagador_nome'] ?></strong>!</h3>
+</div>
+
+<div class="corpo_transparente">
+
+<?php
+	if($pgtoArraya['forma_pagamento'] == "BoletoBancario")
+		echo $this->getChildHtml('transparente.boleto');
+	elseif ($pgtoArraya['forma_pagamento'] == "DebitoBancario")
+		echo $this->getChildHtml('transparente.transferencia');
+	else
+		echo $this->getChildHtml('transparente.cartao');
+?>
+
+</div>
+
+
+

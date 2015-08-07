@@ -1,0 +1,163 @@
+<?php $session = Mage::getSingleton('checkout/session'); ?>
+<?php $pgtoArraya = $session->getPgtoarry(); ?>
+<?php $result_decode = $session->getResult_decode(); ?>
+
+
+<div class="method-type-payment">
+	<h3>Cartão de Crédito</h3>
+	<div class="loader"/>Por favor, aguarde!<p><img src="<?php echo $this->getSkinUrl('MOIP/transparente/imagem/ajax-loader.gif'); ?>" border="0"></p></div>
+</div>
+<div class="method-type-action">
+	<div id="pgcartao">
+		<div id="statustransparente"></div>
+		<div id="statustransparenteadd"></div>
+		<div id="statustransparenteadd2"></div>
+	</div>
+
+	<!--div class="warning-block" style="display:none">
+			<h3>O Pagamento não pode ser realizado</h3>
+			<strong>Erros Apresentados:</strong>
+			<div class="error-msg"><ul class="erros_transparente"></ul></div>
+	</div -->
+	<div style="display: none;" id="loading-mask">
+	    <p id="loading_mask_loader" class="loader"><img alt="Loading..." src="<?php echo $this->getSkinUrl('MOIP/onestepcheckout/images/ajax-loader-tr.gif')?>"><br>Realizando pagamento, por favor aguarde...</p>
+	</div>
+	<!-- div class="repeat_cartao" style="display:none;clear:both;">
+		<div class="title_refaz"><h3>Você poderá refazer o pagamento usando o formulário abaixo</h3></div>
+		<?php  #echo $this->getChildHtml('cartao_form'); ?>
+	</div  -->
+</div>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+var erroValidacao = "";
+var sucesso = "";
+var sucesso = function(data){
+	if (data.Status == "Cancelado"){
+		jQuery(".repeat_cartao").show();
+		jQuery(".warning-block").css({display:"block"});
+		jQuery(".loader").css({display:"none"});
+		jQuery("#statustransparente").html("<h3>Pagamento Cancelado</h3>");
+		jQuery("#statustransparenteadd").html("Transação não aprovada.");
+		if(data.hasOwnProperty(data.Classificacao)){
+			var motivo = JSON.stringify(data.Classificacao.Descricao);
+		} else{
+			var motivo = "semretorno";
+		}
+		if(motivo == '"Desconhecido"'){
+			jQuery(".erros_transparente").html("Seus dados estão incorretos ou não podemos envia-los a operadora de crédito.");
+		}
+		if(motivo == '"Transação não processada"'){
+			jQuery(".erros_transparente").html("O pagamento não pode ser processado.</br>Por favor, tente novamente.</br>Caso o erro persista, entre em contato com o nosso atendimento.");
+		}
+		if(motivo == '"Política de segurança do Transparente"'){
+			jQuery(".erros_transparente").html("Pagamento não autorizado.</br>Entre em contato com o seu banco antes de uma nova tentativa.");
+		}
+		if(motivo == '"Política de segurança do Banco Emissor"'){
+			jQuery(".erros_transparente").html("O pagamento não foi autorizado pelo Banco Emissor do seu Cartão.</br>Entre em contato com o Banco para entender o motivo e refazer o pagamento..");
+		}
+		if(motivo == '"Cartão vencido"'){
+			jQuery(".erros_transparente").html("A validade do seu Cartão expirou.</br>Escolha outra forma de pagamento para concluir o pagamento.");
+		}
+		if(motivo == '"Dados inválidos"'){
+			jQuery(".erros_transparente").html("Dados informados inválidos.</br>Você digitou algo errado durante o preenchimento dos dados do seu Cartão.</br>Certifique-se de que está usando o Cartão correto e faça uma nova tentativa.");
+		}
+		if(motivo =='semretorno' ){
+			jQuery(".erros_transparente").html("Verifique os dados e tente pagar novamente.");
+		}
+	}
+	if (data.Status == "EmAnalise"){
+		jQuery(".loader").css({display:"none"});
+		jQuery("#pgcartao").css({display:"block"});
+		jQuery("#statustransparente").css({display:"block"});
+		jQuery("#statustransparente").html("<h3>Pagamento Aguardando Aprovação</h3>");
+		jQuery("#statustransparenteadd").html("Por favor, aguarde a análise da transação. Assim que for alterado o status você será informado via e-mail.");
+		jQuery("#statustransparenteadd2").html("Este Pagamento foi processado por Moip S/A, a equipe de análise de risco poderá entrar em contato para confirmar dados da transação.");
+
+	}
+	if (data.Status == "Autorizado"){
+		jQuery(".loader").css({display:"none"});
+		jQuery("#statustransparente").html("<h3>Pagamento Aprovado</h3>");
+		jQuery("#statustransparenteadd").html("Por favor, aguarde o processo de envio.");
+
+	}
+}
+var erroValidacao = function(data) {
+	jQuery(".repeat_cartao").show();
+	jQuery(".loading-mask").hide();
+	jQuery(".loader").css({display:"none"});
+	jQuery(".warning-block").show();
+	infosTransparente = '<li class="erro" style="list-style: none;margin-left: 29px;font-weight: bold;">'+data.Mensagem+'</li>';
+    jQuery(".erros_transparente").html("");
+    jQuery(".erros_transparente").append(infosTransparente);
+	var infosTransparente ="";
+        for (i=0; i<data.length; i++) {
+            Transparente = data[i];
+
+            for(j in Transparente)
+            {
+                atributo = j;
+                if(atributo == "Mensagem")
+                {
+                    valor = Transparente[j];
+                    infosTransparente = '<li class="erro" style="list-style: none;margin-left: 29px;font-weight: bold;">'+valor+'</li>';
+                }
+            }
+
+            jQuery(".erros_transparente").html("");
+            jQuery(".erros_transparente").append(infosTransparente);
+		}
+}
+
+jQuery(document).ready(function(){
+		var settings = <?php echo $this->getJson($pgtoArraya); ?>;
+		MoipWidget(settings);
+});
+/* jQuery("#refazercartao").submit(function(e){
+		jQuery(".warning-block").hide();
+	    jQuery(".title_refaz").hide();
+	    jQuery("#pgcartao").hide();
+	    jQuery(".loading-mask").show();
+	    var postData = jQuery(this).serializeArray();
+	    var formURL = jQuery(this).attr("action");
+	    jQuery.ajax(
+	    {
+	        url : formURL,
+	        type: "POST",
+	        data : postData,
+	        success:function(data, textStatus, jqXHR)
+	        {
+				jQuery("#loading-mask").hide();
+				var settings =
+						{
+								"Forma": "CartaoCredito",
+								"Instituicao": jQuery("#bandeira").val(),
+								"Parcelas": jQuery("#Parcelas").val(),
+								"CartaoCredito":
+									{
+										"Numero": jQuery("input[name=Numero]").val(),
+										"Expiracao": jQuery("input[name=Expiracao_mes]").val()+'/'+jQuery("input[name=Expiracao_ano]").val(),
+										"CodigoSeguranca": jQuery("input[name=CodigoSeguranca]").val(),
+										"Portador": {
+											"Nome"	: jQuery("input[name=Portador]").val(),
+											"DataNascimento": jQuery("input[name=DataNascimento]").val(),
+											"Telefone": jQuery("input[name=Telefone]").val(),
+											"Identidade": jQuery("input[name=CPF]").val()
+										}
+									}
+						}
+				sendToCreditCard2(settings);
+	        },
+
+	    });
+	    e.preventDefault();
+});
+function sendToCreditCard2(valores){
+	 var settings = valores
+		MoipWidget(settings);
+	jQuery(".loading-mask").hide();
+} */
+//]]>
+</script>

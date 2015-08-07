@@ -1,0 +1,78 @@
+<?php if (!($_shippingRateGroups = $this->getShippingRates())): ?>
+	<div class="erro_cep sem_cep" style="display:none;">
+    	Aguardando preenchimento do CEP, para cálculo do frete, pelos correios.
+	</div>
+	<div class="erro_cep com_cep" style="display:none;">
+		Não Há Meio de Envio disponível, entre em contato com a loja.
+	</div>
+<?php else: ?>
+<dl id="checkout-shipping-method-loadding" class="sp-methods">
+    <?php $_sole = count($this->getShippingRates()) == 1; foreach ($this->getShippingRates() as $code => $_rates): ?>
+        <dt><?php echo $this->getCarrierName($code); ?></dt>
+        <dd>
+            <ul class="shipping">
+            <?php $_sole = $_sole && count($_rates) == "nada"; foreach ($_rates as $_rate): ?>
+                <li>
+                   <?php if ($_rate->getErrorMessage()): ?>
+                   	 	<div class="erro_cep sem_cep" style="display:none;">
+                   	 		Aguardando preenchimento do CEP, para cálculo do frete, pelos correios.
+	                   </div>
+	                   <div class="erro_cep com_cep" style="display:none;">
+	                   		<?php echo $_rate->getErrorMessage() ?>
+	                   </div>
+                   <?php else: ?>
+			               <?php if ($_sole) : ?>
+			                	<span class="no-display"><input name="shipping_method" type="radio" title="Meio de Envio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" class="validate-one-required-by-name"/></span>
+			                	<script type="text/javascript">
+			                	//<![CDATA[
+			                		updateShippingMethod();
+			                	//]]>
+			                	</script>
+			               <?php else: ?>
+			               		<input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" title="Meio de Envio" id="s_method_<?php echo $_rate->getCode() ?>" class="radio shipping_method_handle validate-one-required-by-name" onclick="updateShippingMethod();"/>
+			               <?php endif; ?>
+			               <label for="s_method_<?php echo $_rate->getCode() ?>"  id="s_method_<?php echo $_rate->getCode() ?>" value="<?php echo $_rate->getPrice() ?>">
+
+			               	<?php if(Mage::getStoreConfig('moipall/config/icones_na_entrega')): ?>
+					             <?php  
+						             if ($code == "pedroteixeira_correios" || $code == "flatrate" || $code == "freeshipping"){
+										$pedroteixeira_correios_40045 = $this->getSkinUrl('MOIP/transparente/imagem/pedroteixeira_correios_40045.png'); //sedex_acobrar
+										$pedroteixeira_correios_41106 = $this->getSkinUrl('MOIP/transparente/imagem/pedroteixeira_correios_41106.png'); //pac
+										$pedroteixeira_correios_40010 = $this->getSkinUrl('MOIP/transparente/imagem/pedroteixeira_correios_40010.png'); //sedex
+										$pedroteixeira_correios_40215  = $this->getSkinUrl('MOIP/transparente/imagem/pedroteixeira_correios_40215.png'); //sedex10
+										$pedroteixeira_correios_40290  = $this->getSkinUrl('MOIP/transparente/imagem/pedroteixeira_correios_40290.png'); //sedexhoje
+										$freeshipping_freeshipping = $this->getSkinUrl('MOIP/transparente/imagem/freeshipping_freeshipping.png'); //frete gratis
+										$flatrate_flatrate = $this->getSkinUrl('MOIP/transparente/imagem/flatrate_flatrate.png'); //frete fixo
+									}
+								?>
+								
+									<img src="<?php echo $this->getSkinUrl('MOIP/transparente/imagem/'); echo $_rate->getCode()?>.gif"  id="moip<?php echo $_rate->getCode() ?>.png" alt="<?php echo $_rate->getMethodTitle() ?>" class="image_shipping">
+								
+							<?php endif; ?>
+	                        	<?php echo $_rate->getMethodTitle() ?>
+		                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+		                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+		                        <?php echo $_excl; ?>
+		                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+		                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+		                        <?php endif; ?>
+	                    </label>
+                   <?php endif ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </dd>
+    <?php endforeach; ?>
+</dl>
+<?php endif; ?>
+<script type="text/javascript">
+//<![CDATA[
+	if(jQuery("#billing\\:postcode").val() == '' || jQuery("#billing\\:postcode").val() == '.'){
+		jQuery(".sem_cep").show();
+		jQuery(".com_cep").hide();
+	} else{
+		jQuery(".sem_cep").hide();
+		jQuery(".com_cep").show();
+	}
+//]]>
+</script>

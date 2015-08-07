@@ -1,0 +1,66 @@
+ul.form-list{clear:both;}
+ul.form-list .wide > div.input-box > select{width: 100% !important;}
+ul.form-list .wide.cc-cvv > div{display: block;float: left;}
+ul.form-list .wide.cc-cvv > div.cc{width: 60% !important;}
+ul.form-list .wide.cc-cvv > div.cvv{width: 20% !important;margin-left: 10% !important;}
+ul.form-list .wide.cc-validade > div > select{ margin: 0 !important;width: 35% !important;margin-left: 5% !important;}
+ul.form-list .wide.cc-validade > div > select#credito_expiracao_mes{margin: 0 !important; clear: both;}
+
+ul.form-list.dados-titular > li > label{clear: none !important; width: 105px;float: left !important;padding-top: 5px;}
+ul.form-list.dados-titular > li > div{ width: 50% !important;clear: none !important; float: left;}
+#formcli > ul > li > label > em {right: 2px !important;}
+ul.inline li{float: left;width: 30%;margin-right: 2%; text-align: center;}
+ul.inline li img{width: 70%; height: auto; clear: both; display: block;margin-bottom: 5px;}
+
+.transparente-payment-method-content{display: none;clear: both; width: 100%;}
+
+ul.inline.input-switcher-4 > li{width: 23%}
+ul.inline.input-switcher-5 > li  img{width: 45px;display: none;}
+.tab-pane.hide{
+				display: none;
+			}
+.tooltip-transparente-handler{position: relative !important;}
+.tooltip-transparente{display: none;position: absolute; right: 0px;top: auto;background: #cccccc;padding: 20px;border-radius: 10px;min-width:  245px;box-shadow: 0 0 10px #000;z-index:999;}
+.tooltip-transparente-visible{display: block;}
+.span3.method-image > img {float: right;margin-right: 15px;margin-top: 25px;}
+#advice-required-entry-credito_expiracao_ano {max-width: 84px;position: absolute; display:none;clear: both !important.}
+#advice-required-entry-credito_expiracao_mes {position: absolute; clear: both !important; }
+li.cofre {
+	width: 100%;
+	clear: both;
+	float: left;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.image_cofre {
+	width: 30%;
+	float: left;
+	margin-right: 5%;
+	margin-top: 5px;
+}
+.image_cofre > img{
+	width: 70%;
+	float: left;
+	padding: 10%;
+	padding-top: 5px;
+}
+.cofre_number {
+	padding-top: 5px;
+	width: 55%;
+	float: left;
+	border-radius: 3px 0 0 3px;
+}
+
+.radio_cofre {
+	float: left;
+	width: 10%;
+	background: #ccc;
+	min-height: 50px
+}
+input#cartao_salvo {
+	margin-top: 20px;
+	margin-left: 6px;
+}
+.alerta_data {
+float: left;
+}

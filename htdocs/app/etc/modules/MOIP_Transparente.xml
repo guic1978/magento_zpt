@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <MOIP_Transparente>
+            <active>true</active><!-- this is an active module -->
+            <codePool>local</codePool><!-- this module will be located in app/code/local code pool -->
+            <depends><!-- specify dependencies for correct module loading order -->
+                <Mage_Payment />
+            </depends>
+        </MOIP_Transparente>
+    </modules>
+</config>

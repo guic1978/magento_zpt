@@ -1,0 +1,68 @@
+<?php
+if(Mage::app()->getRequest()->getModuleName() != "onestepcheckout" && Mage::app()->getRequest()->getModuleName() != "checkout"){
+?>
+<?php $info = $this->_prepareInfo(); ?>
+	<?php if($info['result_meio'] == "Cartão de Crédito"): ?>
+	<div class="cartao" style="width:100%">
+		<h4>Pago em <?php echo $info['creditcard_parc']; ?> parcelas via:</h4>
+	</div>
+	<div class="cartao" style="width:100%">
+		<div class="image" style="width:30%; float:left;">
+			<?php $imagem = $info['image']; ?>
+			<div class="image" style="padding:5px"><img src="<?php echo $imagem; ?>"></div>
+		</div>
+		<div class="dados" style="width:70%; float:left">
+			<label>6 Primeiros dígitos do cartão</label>
+			<div class="input-text"><strong><?php echo $info['first6'] ?></strong></div>
+			<label>4 Últimos dígitos do cartão</label>
+			<div class="input-text"><strong><?php echo $info['last4'] ?></strong></div>
+		</div>
+	</div>
+	<?php endif ?>
+
+
+	<?php if($info['result_meio'] == "Boleto Bancário"): ?>
+		<div class="metodo title"><h3><?php echo $info['result_meio'] ?></h3></div>
+			<div style="clear:both; width:100%;">
+				<div style="clear:both;width:100%"><a  class="button btn-checkout btn-default scalable" title="Finalizar compra"  href="<?php echo  $info['url']  ?>">Ver boleto</a></div>
+			</div></br>
+			<div class="boleto_line_title"><h4>Ou Cópie o endereço:</h4></div>
+			<div class="boleto_line"><input type="text" class="input-text" value="<?php echo $info['url'] ?>" readonly="true" style="width:350px"></div>
+	<?php endif ?>
+
+
+
+	<?php if($info['result_meio'] == "Transferência Bancária"): ?>
+		<div class="metodo title"><h3><?php echo $info['result_meio'] ?></h3></div>
+		<div class="trans" style="width:100%">
+			<div style="clear:both;width:100%"><a  class="button btn-checkout btn-default scalable" title="Finalizar compra"  href="<?php echo  $info['url']  ?>">Ir Ao banco</a></div>
+			<div class="boleto_line_title" style="clear:both;width:100%"><h4>Ou Cole a Url na Barra do Navegador:</h4></div>
+			<div class="boleto_line" style="clear:both;width:100%"><input type="text" class="input-text" value="<?php echo $info['url'] ?>" readonly="true" style="width:350px"></div>
+		</div>
+	<?php endif ?>
+
+
+<?php } if(Mage::app()->getRequest()->getModuleName() == "onestepcheckout" || Mage::app()->getRequest()->getModuleName() == "checkout" ) { ?>
+
+<?php echo "Pagamento via Moip Pagamentos S/A" ?>
+
+<?php } if(Mage::app()->getRequest()->getModuleName() == "sales"): ?>
+			<?php
+				$order = Mage::getModel('sales/order')->load($info['realorder_id'], 'increment_id');
+				$states = $order->getStatus();
+				if($states == "pending" || $order->isCanceled()){
+				$api = $this->getTransparente();
+				$resposta_transparente =  $info['token'];
+				if (Mage::getSingleton('transparente/standard')->getConfigData('ambiente') == "teste") {
+				     $url = "https://desenvolvedor.moip.com.br/sandbox/Instrucao.do?token=";
+  					 $urljs = "https://desenvolvedor.moip.com.br/sandbox/";
+				   }
+				   else {
+				    $url = "https://www.moip.com.br/Instrucao.do?token=";
+    				$urljs = "https://www.moip.com.br/";
+				}
+			?>
+
+<?php
+}
+ endif; ?>

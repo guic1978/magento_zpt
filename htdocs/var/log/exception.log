@@ -1,0 +1,452 @@
+2015-08-02T19:19:14+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'smtp.gmail.com has timed out' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:377
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php(415): Zend_Mail_Protocol_Abstract->_receive(300)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(199): Zend_Mail_Protocol_Abstract->_expect(220, 300)
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T19:24:24+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'smtp.gmail.com has timed out' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:377
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php(415): Zend_Mail_Protocol_Abstract->_receive(300)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(199): Zend_Mail_Protocol_Abstract->_expect(220, 300)
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T19:26:05+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message '5.7.14 <https://accounts.google.com/ContinueSignIn?sarp=1&scc=1&plt=AKgnsbvXa
+ 5.7.14 pz9etqmRhtOdM_j5MEcSitPuYJGxsRm-HopQnJpbe5k1yT1bJCUkONbFZaVGxIYHMs2BMQ
+ 5.7.14 z7G0LvBOXnrjIKZ6QQFhYphJSvqNVZP10_PIk_jbBuLypJ5UGzZI3G9ScmRAy36Gn7Z5gM
+ 5.7.14 e3my-Y5nJNORffGVumXYGWMXYnByrbK9aTbUlP5vNbUQdcg9do8cF71X1lDdDsgmzhgms5
+ 5.7.14 tVuqF8SAObjWUG3nNDQd92WCnX1o> Please log in via your web browser and
+ 5.7.14 then try again.
+ 5.7.14  Learn more at
+ 5.7.14  https://support.google.com/mail/answer/78754 60sm5709492qgy.37 - gsmtp
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T19:36:28+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Message rejected: Email address is not verified.
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(324): Zend_Mail_Protocol_Abstract->_expect(250, 600)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(215): Zend_Mail_Protocol_Smtp->data('To: hello@examp...')
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#4 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#11 {main}
+2015-08-02T19:38:00+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Message rejected: Email address is not verified.
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(324): Zend_Mail_Protocol_Abstract->_expect(250, 600)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(215): Zend_Mail_Protocol_Smtp->data('To: hello@examp...')
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#4 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#11 {main}
+2015-08-02T19:47:38+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>SignatureDoesNotMatch</Code>
+    <Message>The request signature we calculated does not match the signature you provided. Check your AWS Secret Access Key and signing method. Consult the service documentation for details.</Message>
+  </Error>
+  <RequestId>53d22a7a-394f-11e5-86b0-6dbf1d5092af</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T19:48:55+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>SignatureDoesNotMatch</Code>
+    <Message>The request signature we calculated does not match the signature you provided. Check your AWS Secret Access Key and signing method. Consult the service documentation for details.</Message>
+  </Error>
+  <RequestId>81bffacd-394f-11e5-a18e-1dc9eb8ce34f</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T19:55:25+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>InvalidClientTokenId</Code>
+    <Message>The security token included in the request is invalid</Message>
+  </Error>
+  <RequestId>6a2318ad-3950-11e5-9b5c-e735eb37ef20</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T19:58:01+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>InvalidClientTokenId</Code>
+    <Message>The security token included in the request is invalid</Message>
+  </Error>
+  <RequestId>c6eb62c4-3950-11e5-9773-f3474d4d2c06</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T20:02:46+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>InvalidClientTokenId</Code>
+    <Message>The security token included in the request is invalid</Message>
+  </Error>
+  <RequestId>713e9882-3951-11e5-9882-13c9e85e911a</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T20:08:14+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>InvalidClientTokenId</Code>
+    <Message>The security token included in the request is invalid</Message>
+  </Error>
+  <RequestId>345efda8-3952-11e5-a24f-03085f782b32</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T20:09:37+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:10:15+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:12:12+00:00 ERR (3): 
+exception 'Exception' with message '<ErrorResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+  <Error>
+    <Type>Sender</Type>
+    <Code>InvalidClientTokenId</Code>
+    <Message>The security token included in the request is invalid</Message>
+  </Error>
+  <RequestId>c2916d0b-3952-11e5-b8cf-17e2fa88351a</RequestId>
+</ErrorResponse>
+' in /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/lib/AmazonSES.php:108
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): App_Mail_Transport_AmazonSES->_sendMail()
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#2 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(App_Mail_Transport_AmazonSES))
+#3 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#4 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#7 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#8 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#9 {main}
+2015-08-02T20:17:09+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:18:30+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Plain.php(93): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Plain->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:26:48+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:26:50+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:27:18+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:28:48+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:29:13+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Could not open socket' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:277
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(167): Zend_Mail_Protocol_Abstract->_connect('ssl://email-smt...')
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(199): Zend_Mail_Protocol_Smtp->connect()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#4 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#11 {main}
+2015-08-02T20:29:46+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:38:08+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Authentication Credentials Invalid
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp/Auth/Login.php(95): Zend_Mail_Protocol_Abstract->_expect(235)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(217): Zend_Mail_Protocol_Smtp_Auth_Login->auth()
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(200): Zend_Mail_Protocol_Smtp->helo('localhost')
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#4 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#9 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#10 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#11 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#12 {main}
+2015-08-02T20:43:16+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Message rejected: Email address is not verified.
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(324): Zend_Mail_Protocol_Abstract->_expect(250, 600)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(215): Zend_Mail_Protocol_Smtp->data('To: hello@examp...')
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#4 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#11 {main}
+2015-08-02T20:51:33+00:00 ERR (3): 
+exception 'Zend_Mail_Protocol_Exception' with message 'Message rejected: Email address is not verified.
+' in /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Abstract.php:431
+Stack trace:
+#0 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Protocol/Smtp.php(324): Zend_Mail_Protocol_Abstract->_expect(250, 600)
+#1 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Smtp.php(215): Zend_Mail_Protocol_Smtp->data('To: hello@examp...')
+#2 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail/Transport/Abstract.php(348): Zend_Mail_Transport_Smtp->_sendMail()
+#3 /opt/bitnami/apps/magento/htdocs/lib/Zend/Mail.php(1194): Zend_Mail_Transport_Abstract->send(Object(Zend_Mail))
+#4 /opt/bitnami/apps/magento/htdocs/app/code/local/Aschroder/SMTPPro/controllers/Smtp/TestController.php(136): Zend_Mail->send(Object(Zend_Mail_Transport_Smtp))
+#5 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Aschroder_SMTPPro_Smtp_TestController->indexAction()
+#6 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('index')
+#7 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#8 /opt/bitnami/apps/magento/htdocs/app/code/core/Mage/Core/Model/App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#9 /opt/bitnami/apps/magento/htdocs/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#10 /opt/bitnami/apps/magento/htdocs/index.php(83): Mage::run('', 'store')
+#11 {main}

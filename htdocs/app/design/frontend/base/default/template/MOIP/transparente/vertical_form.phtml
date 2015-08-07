@@ -1,0 +1,338 @@
+<?php $cofre = $this->getCofre(); ?>
+<?php $nome ="" ?>
+<?php $telefone ="" ?>
+<?php $cpf ="" ?>
+<?php $dn ="" ?>
+<script type="text/javascript">
+//<![CDATA[
+
+jQuery(document).ready(function() {
+	jQuery('.input-switcher > li').not('.transparente-payment-method-content').bind({
+	    click: function() {
+	      jQuery(this).parent().find('input[type="radio"]').prop('checked',false);
+	      jQuery('#checkout-payment-bandeira').hide();
+	      jQuery('#checkout-payment-banco').hide();
+	      jQuery(this).find('input[type="radio"]').prop('checked',true);
+	      <?php if(Mage::getStoreConfig('moipall/config/enable_carrinho')): ?>
+	        updatePaymentMethod('<?php echo $this->getMethodCode() ?>');
+	      <?php endif ?>
+
+	    }
+	});
+
+	<?php if(Mage::getStoreConfig('moipall/config/enable_carrinho')): ?>
+	if(jQuery("input.radio.payment_method_handle:checked").val() == "moip_transparente_standard"){
+		showBlocks();
+	} else {
+		hideBlocks();
+	}
+	if(jQuery("input[name=payment\\[method\\]]:checked").val() == "moip_transparente_standard" && jQuery("input[name=payment\\[forma_pagamento\\]]:checked").val() != ""){
+			jQuery("#cartao_radio").trigger("click");
+			jQuery("#transparente-cartao").css({'display':'block'})
+	} else {
+			jQuery("input[name=payment\\[forma_pagamento\\]]:checked").val();
+			jQuery("#transparente-cartao").css({'display':'none'});
+	}
+	<?php endif ?>
+	<?php if($cofre !="false"): ?>
+	jQuery(document).ready(function() {
+		jQuery(".cartao").hide();
+		jQuery(".formcli").hide();
+	});
+	<?php endif ?>
+});
+//]]>
+</script>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('MOIP/transparente/css/vertical_form.css'); ?>"media="all">
+	<ul id="payment_form_<?php echo $this->getMethodCode() ?>">
+		<ul class="inline input-switcher transparente-payment-methods">
+			<?php if($this->mostraCartao()): ?>
+			<li data-target="transparente-cartao" class='transparente-payment-method-line'>
+				<input id="cartao_radio" type="radio" name="payment[forma_pagamento]" title="Cartão de Crédito" value="CartaoCredito" class="forma_pg input-text  validate-one-required-by-name" <?php if(Mage::getStoreConfig('moipall/config/enable_carrinho')): ?>onclick="updatePaymentMethod('<?php echo $this->getMethodCode() ?>');"<?php endif ?>>
+				<img alt="Cartão de Crédito" src="<?php echo $this->getCartaoIcon(); ?>">
+				<div class="middle-method">
+					<div class="chamada">Cartão de Crédito</div>
+					<div class="resume"><?php echo $this->getParcelamento('preview_parcelas') ?></div>
+				</div>
+				<div class="method-price">
+					<div class="method-price-title">Valor</div>
+					<p class="method-price-title"><span class="price"><?php echo $this->getParcelamento('preview'); ?></span></p>
+				</div>
+			</li>
+			<li class="transparente-payment-method-content row-fluid" id="transparente-cartao" style="display:none">
+			<h3>Cartão de Crédito</h3>
+			<?php if($cofre !="false"): ?>
+				<?php $cofre = Mage::helper('core')->jsonDecode($cofre); ?>
+				<ul class="form-list-cofre">
+					<input type="hidden" id="use_cofre" name="payment[use_cofre]" value="1" >
+					<input type="hidden" id="brand_cofre" name="payment[cofre_brand]" value="" >
+					<input type="hidden" id="cofre_numero" name="payment[cofre_numero]" value="" >
+					<?php foreach ($cofre  as $key => $value): ?>
+						<?php $cardBrand = $value['brand_transparente'] ?>
+						<?php $cardNunber = $value['cofre'] ?>
+						<li class="cofre">
+							<label>
+								<div class="radio_cofre">
+
+									<input id="cartao_salvo" class="validate-one-required-by-name" type="radio" name="cofre_select" title="Cartão de Crédito Salvo" onclick="javascript:Cofre('<?php echo $cardBrand ?>','<?php echo $cardNunber ?>');">
+								</div>
+								<div class="image_cofre">
+									<img src="<?php echo $this->imageCofre($value['brand_transparente']); ?>" alt="<?php echo $value['brand_transparente']; ?>" border="0">
+								</div>
+								<div class="cofre_number">
+									<h4 class="brand_title"><?php echo $value['brand_transparente']; ?> </h4>
+									<?php echo $value['first6'] ?> ** **** <?php echo $value['last4'] ?>
+								</div>
+							</label>
+						</li>
+					<?php endforeach; ?>
+					<li class="wide cc-cvv">
+						<div class="cc">
+							<label class="required" for="credito_parcela">Parcelas<em>*</em></label>
+							<div class="input-box">
+
+
+								<select name="payment[cofre_parcelamento]" id="credito_parcelamento" class="input-text required-entry" title="Número de Parcelas" >
+									<option value="" select>Selecione as parcelas</option>
+										<?php $parcelas = $this->getParcelamento('parcelas'); ?>
+						               <?php foreach ( $parcelas as $key => $value) { ?>
+						               		<?php echo $parcelas[$key]; ?>
+						               <?php } ?>
+						        </select>
+						        <?php echo $this->getTextoParcelas() ?>
+							</div>
+						</div>
+
+						<div class="cvv tooltip-transparente-handler">
+								<label class="required" for="cvv">Código de Segurança<i class="icon-question-sign"></i><em>*</em></label>
+								<div class="input-box">
+									<input type="text" name="payment[cofre_cvv]" minlength="3" maxlength="4" id="cofre_cvv" class="input-text required-entry" title="Código de Segurança do Cartão" >
+								</div>
+						</div>
+					</li>
+					<li class="wide">
+						<label>
+						<input type="checkbox" name="payment[new_card]"  title="Salvar Cartão para compras futuras?" id="new_card" class="checkbox" onclick="javascript:Novo()"> Comprar com um novo cartão</label>
+					</li>
+				</ul>
+
+				<?php endif; ?>
+
+
+			<ul class="form-list cartao">
+
+				<li class="wide cc-cvv">
+					<div class="cc">
+						<label class="required" for="credito_numero">Número<em>*</em></label>
+						<div class="input-box">
+							<input type="text" name="payment[credito_numero]" id="credito_numero" title="Número do seu Cartão de Crédito"  class="input-text required-entry validate-cc-number  validate-cc-type validate-number">
+						</div>
+					</div>
+					<div class="cvv tooltip-transparente-handler">
+						<label class="required" for="cvv">CVV <i class="icon-question-sign"></i><em>*</em></label>
+						<div class="input-box">
+							<input type="text" name="payment[credito_codigo_seguranca]" onkeyup="countChar(this)" title="Código de Seguranção do Seu Cartão" class="input-text required-entry ccv validate-cc-cvn validate-number" id="credito_codigo_seguranca" >
+							<span class="tooltip-transparente cvv_tooltip">
+								<span class="custom help" style=" width:260px;"><em>Código de segurança: </em> Veja no verso do seu cartão.<img src="<?php echo $this->getSkinUrl('MOIP/transparente/imagem/codigo-seguranca.png'); ?>" id="imageseguratransparente" border="0"></span>
+							</span>
+						</div>
+					</div>
+				</li>
+				<input type="hidden" name="transparente_cc_type" id="transparente_cc_type" value=""/>
+				<ul class="inline banderias-cartao input-brand-bandeira input-switcher-5">
+					<li>
+						<img src="<?php echo $this->getVisaImage(); ?>" alt="Visa" border="0" onclick="setCcType('VI');">
+						<input type="radio" id="bandeiratransparente" name="payment[credito_instituicao]" value="Visa" onclick="setCcType('VI');" title="Bandeira do seu cartão" class="Visa-moip validate-one-required-by-name" style="display:none;" >
+					</li>
+					<li>
+						<img src="<?php echo $this->getMastercardImage(); ?>" alt="Mastercard" border="0" onclick="setCcType('MC');">
+						<input id="bandeiratransparente" type="radio"  name="payment[credito_instituicao]"  value="Mastercard" onclick="setCcType('MC');" title="Bandeira do seu cartão" class="Mastercard-moip validate-one-required-by-name" style="display:none;" >
+					</li>
+					<li>
+						<img src="<?php echo $this->getAmericanExpressImage(); ?>" alt="AmericanExpress" border="0" onclick="setCcType('AE');">
+						<input id="bandeiratransparente" type="radio"  name="payment[credito_instituicao]" value="AmericanExpress" onclick="setCcType('AE');" title="Bandeira do seu cartão" class="Amex-moip validate-one-required-by-name" style="display:none;" >
+					</li>
+					<li>
+						<img src="<?php echo $this->getDinersImage(); ?>" alt="Diners" border="0" onclick="setCcType('DI');">
+						<input id="bandeiratransparente" type="radio"  name="payment[credito_instituicao]"  value="Diners" onclick="setCcType('DI');" title="Bandeira do seu cartão" class="Dinners-moip validate-one-required-by-name" style="display:none;" >
+					</li>
+					<li>
+						<img src="<?php echo $this->getHipercardImage(); ?>" alt="Hipercard" border="0"  onclick="setCcType('HI');">
+						<input id="bandeiratransparente" type="radio"  name="payment[credito_instituicao]"  value="Hipercard" onclick="setCcType('HI');" title="Bandeira do seu cartão" class="Hipercard-moip validate-one-required-by-name" style="display:none;" >
+					</li>
+				</ul>
+
+				<li class="wide cc-validade">
+					<label class="required" for="Validade">Validade<em>*</em></label>
+					<div class="input-box">
+						<select name="payment[credito_expiracao_mes]" id="credito_expiracao_mes" class="input-text required-entry" title="Mês de Vencimento do seu Cartão">
+							<option value="">Mês</option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+						<select name="payment[credito_expiracao_ano]" id="credito_expiracao_ano" class="input-text required-entry" title="Ano de Vencimento do seu Cartão">
+							<option value="">Ano</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+						</select>
+					</div>
+				</li>
+				<div class="alerta_data"></div>
+
+				<li class="wide">
+					<label class="required" for="credito_parcela">Opções de pagamento<em>*</em></label>
+					<div class="input-box">
+
+
+						<select name="payment[credito_parcelamento]" id="credito_parcelamento" class="input-text required-entry" title="Número de Parcelas de sua Compra" >
+							<option value="" select>Selecione as parcelas</option>
+								<?php $parcelas = $this->getParcelamento('parcelas'); ?>
+				               <?php foreach ( $parcelas as $key => $value) { ?>
+				               		<?php echo $parcelas[$key]; ?>
+				               <?php } ?>
+				        </select>
+				        <?php echo $this->getTextoParcelas() ?>
+					</div>
+				</li>
+
+				<li class="wide">
+					<label><input type="checkbox" name="payment[save_cart]"  title="Salvar Cartão para compras futuras?" id="save_cart" class="checkbox"> Salvar cartão para compras futuras?</label>
+				</li>
+
+			</ul>
+
+			<div id="formcli" style="display:none;">
+			<ul class="form-list dados-titular">
+			<h3>Dados do Titular</h3>
+				<li class="wide tooltip-transparente-handler">
+					<label class="required" for="credito_parcela"><em>*</em>Nome no Cartão</label>
+					<div class="input-box">
+						<input type="text" name="payment[credito_portador_nome]" value="<?php echo $nome; ?>" class="input-text required-entry" title="Nome Impresso em seu Cartão" id="credito_portador_nome" >
+						<span class="tooltip-transparente nome_tooltip">
+							<span class="custom help"><em>Nome do titular</em><br>deverá ser exatamente como está no cartão.</span>
+						</span>
+					</div>
+				</li>
+				<li class="wide">
+					<label class="required" for="credito_parcela"><em>*</em>CPF</label>
+					<div class="input-box">
+						<input type="text" name="payment[credito_portador_cpf]" class="input-text required-entry validar_cpf" title="CPF do Titular de seu Cartão" id="credito_portador_cpf" value="<?php echo $cpf; ?>" >
+					</div>
+				</li>
+				<li class="wide">
+					<label class="required" for="credito_parcela"><em>*</em>Telefone</label>
+					<div class="input-box">
+						<input type="text" name="payment[credito_portador_telefone]" id="credito_portador_telefone" title="Telefone do Titular do Cartão" value="<?php echo $telefone; ?>" class="input-text required-entry">
+					</div>
+				</li>
+				<li class="wide">
+					<label class="required" for="credito_parcela"><em>*</em>Data nascimento</label>
+					<div class="input-box">
+						<input type="text" name="payment[credito_portador_nascimento]" id="credito_portador_nascimento" title="Data de Nascimento do Titular do Cartão" value="<?php if ($dn !='') { echo $dn; } ?>"  class="input-text required-entry" >
+					</div>
+				</li>
+			</ul>
+			</div>
+
+
+
+
+			</li>
+			<?php endif; ?>
+			<?php if($this->mostraBoleto()): ?>
+			<li data-target="transparente-boleto" class='transparente-payment-method-line'>
+				<input type="radio" name="payment[forma_pagamento]" id="boleto_option" title="Boleto" <?php if(!$this->boletoDisponivel('valid')): ?>value="BoletoBancario" <?php endif; ?>class="forma_pg<?php if(!$this->boletoDisponivel('valid')): ?> invalid-boleto<?php endif; ?> input-text  validate-one-required-by-name" <?php if(Mage::getStoreConfig('moipall/config/enable_carrinho')): ?>onclick="updatePaymentMethod('<?php echo $this->getMethodCode() ?>');"<?php endif ?>>
+				<img alt="Boleto Bancário" src="<?php echo $this->getBoletoIcon(); ?>">
+				<div class="middle-method">
+					<div class="chamada">Boleto</div>
+				<div class="resume"><?php if(!$this->boletoDisponivel('valid')){echo $this->getTextoBoleto('preview');} ?></div>
+				</div>
+				<div class="method-price">
+					<?php if(!$this->boletoDisponivel('valid')): ?>
+					<div class="method-price-title">Valor</div>
+					<?php endif; ?>
+					<p class="method-price-title"><?php if(!$this->boletoDisponivel('valid')){echo $this->getBoletoPrice();}else{echo "Indisponível";} ?></p>
+				</div>
+			</li>
+
+			<li class="transparente-payment-method-content row-fluid" id="transparente-boleto" style="display:none">
+				<div class="span3 method-image">
+					<img alt="Boleto Bancário" id="imageboleto" src="<?php echo $this->getBoletoImage(); ?>">
+				</div>
+				<div class="span9">
+					<h3>Boleto</h3>
+					<p class="desc"><?php echo $this->getTextoBoleto("texto") ?></p>
+					<?php if(!$this->boletoDisponivel('valid')): ?>
+					<div class="method-price">Valor</div>
+					<?php endif; ?>
+					<p class="method-price"><?php if(!$this->boletoDisponivel('valid')){echo $this->getBoletoPrice();}else{echo $this->boletoDisponivel('text');} ?></p>
+
+				</div>
+			</li>
+			<?php endif; ?>
+			<?php if($this->mostraTransferencia()): ?>
+			<li data-target="transparente-transferencia" class='transparente-payment-method-line'>
+				<input type="radio" class="forma_pg input-text  validate-one-required-by-name" id="ted" name="payment[forma_pagamento]" value="DebitoBancario" <?php if(Mage::getStoreConfig('moipall/config/enable_carrinho')): ?>onclick="updatePaymentMethod('<?php echo $this->getMethodCode() ?>');"<?php endif ?> >
+				<img alt="Transferência Bancária" id="imageboleto" src="<?php echo $this->getTransferenciaIcon(); ?>">
+				<div class="middle-method">
+					<div class="chamada">Transferência</div>
+					<div class="resume"><?php echo $this->getTextoTranferencia('preview') ?></div>
+				</div>
+				<div class="method-price">
+					<div class="method-price-title">Valor</div>
+					<p class="method-price-title"><?php echo $this->getTransferenciaPrice(); ?></p>
+				</div>
+			</li>
+			<li class="transparente-payment-method-content row-fluid" id="transparente-transferencia" style="display:none">
+				<h3>Transferência Online</h3>
+				<div id="pagdebito">
+					Após finalizar o pedido você será redirecionado ao site do seu banco...</br>
+					<?php echo $this->getTextoTranferencia("texto"); ?>
+					<div class="method-price">Valor</div>
+					<p class="method-price"><?php echo $this->getTransferenciaPrice(); ?></p>
+				</div>
+				<ul class="inline input-switcher input-switcher-4">
+					<li>
+						<img  src="<?php echo $this->getBBImage(); ?>"  alt="Banco do Brasil" id="debbb" >
+						<input type="radio" id="debito_instituicao" name="payment[debito_instituicao]" value="BancoDoBrasil" title="Banco Para a Transferência" class="validate-one-required-by-name">
+					</li>
+					<li>
+						<img  src="<?php echo $this->getBradescoImage(); ?>" id="debbradesco" alt="Bradesco">
+						<input type="radio" id="debito_instituicao" name="payment[debito_instituicao]" value="Bradesco"  title="Banco Para a Transferência" class="validate-one-required-by-name">
+					</li>
+					<li>
+						<img src="<?php echo $this->getItauImage(); ?>" id="debitau" alt="Itaú"  >
+						<input type="radio" id="debito_instituicao" name="payment[debito_instituicao]" value="Itau"  title="Banco Para a Transferência" class="validate-one-required-by-name">
+					</li>
+					<li>
+						<img src="<?php echo $this->getBanrisulImage(); ?>" id="Banrisul" alt="Banrisul"  >
+						<input type="radio" id="debito_instituicao" name="payment[debito_instituicao]" value="Banrisul"  title="Banco Para a Transferência" class="validate-one-required-by-name">
+					</li>
+				</ul>
+
+			</li>
+			<?php endif; ?>
+		</ul>
+	</ul>
+

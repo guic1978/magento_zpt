@@ -1,0 +1,38 @@
+<?php $session = Mage::getSingleton('checkout/session'); ?>
+<?php $pgtoArraya = $session->getPgtoarry(); ?>
+<?php $result_decode = $session->getResult_decode(); ?>
+<?php $token = $result_decode['token']; ?>
+
+		<div class="method-type-payment">
+			<h3>Quase lá! Agora só falta pagar o boleto.</h3>
+		</div>
+		<div class="method-type-action">
+			<button class="button btn-checkout"  data-toggle="modal" data-target="#largeModal" ><span><span><i class="fa fa-print"></i> Imprimir Boleto</span></span></button>
+
+
+		</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+	jQuery(document).ready(function(){
+		jQuery("#token").val("<?php echo $result_decode['token'] ?>");
+		var settings =
+			<?php echo $this->getJson($pgtoArraya); ?>
+		;
+		MoipWidget(settings);
+
+	});
+	var sucesso = function(data){
+		jQuery('body').append('<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">      <div class="modal-dialog modal-lg">        <div class="modal-content">          <div class="modal-header">            <h4 class="modal-title" id="myModalLabel">Boleto Bancário</h4>          </div>          <div class="modal-body">		<iframe  width="800"  onload="this.height=screen.height;" scrolling= "no" frameBorder="0" allowtransparency="true" src="<?php echo $this->getUrlAmbiente(); ?>Instrucao.do?token=<?php echo $token ?>"> </iframe>          </div>          <div class="modal-footer">            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>          </div>        </div>      </div>    </div>');
+		jQuery('#largeModal').modal('toggle');
+	};
+
+	var erroValidacao = function(data){
+		alert(data);
+	};
+//]]>
+</script>
+
+
+

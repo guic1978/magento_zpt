@@ -1,0 +1,47 @@
+<?php
+/* Mage::getModel("sales/order")->getCollection()->getLastItem()->getIncrementId(); */
+if(Mage::app()->getRequest()->getModuleName() != "onestepcheckout" && Mage::app()->getRequest()->getModuleName() != "checkout"){
+?>
+<?php $info = $this->_prepareInfo(); ?>
+	<?php if($info['result_meio'] == "Cartão de Crédito"): ?>
+		<div class="box-content">
+			<h3>Pago em <?php echo $info['creditcard_parc']; ?> parcelas via:</h3>
+		<div class="box-content grid12-4">
+
+			<?php $imagem = $info['image']; ?>
+			<div class="image" style="padding:5px"><img src="<?php echo $imagem; ?>"></div>
+		</div>
+		<div class="box-content grid12-8">
+			<label>6 Primeiros dígitos do cartão</label>
+			<div class="input-text"><strong><?php echo $info['first6'] ?></strong></div>
+			<label>4 Últimos dígitos do cartão</label>
+			<div class="input-text"><strong><?php echo $info['last4'] ?></strong></div>
+		</div>
+	</div>
+	<?php endif ?>
+
+
+	<?php if($info['result_meio'] == "Boleto Bancário"): ?>
+		<div class="box-content"><h3><?php echo $info['result_meio'] ?></h3>
+			<div class="box-content">
+				<div class="box-content"><a  class="button btn-checkout btn-default" title="Finalizar compra"  href="<?php echo  $info['url']  ?>"  target="_blank">Ver boleto</a></div>
+			</div>
+		</div>
+	<?php endif ?>
+
+
+
+	<?php if($info['result_meio'] == "Transferência Bancária"): ?>
+		<div class="box-content"><h3><?php echo $info['result_meio'] ?></h3>
+			<div class="box-content">
+				<a  class="button btn-checkout btn-default" title="Finalizar compra"  href="<?php echo  $info['url']  ?>"  target="_blank">Ir Ao banco</a>
+			</div>
+		</div>
+	<?php endif ?>
+
+
+<?php } else { ?>
+
+<?php echo "Pagamento via Moip Pagamentos S/A" ?>
+
+<?php } ?>

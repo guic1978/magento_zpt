@@ -1,0 +1,53 @@
+/* =============== Parcelas Moip  ================== */
+#parcelas_integrais.skip-active {  display: block;}
+a.skip-link.skip-parcelas_integrais {font-size: 12px;color: #000;text-decoration: underline;float: right;width: 100%;text-align: right;}
+#parcelas_integrais {  background: #fff;padding: 10px;color: #999;border: 1px solid #ccc;box-shadow: 0px -1px 16px 1px rgba(0, 0, 0, 0.2);position: absolute;width: 360px;margin: 5px;z-index: 9;margin-top: 25px;}
+#parcelas_integrais:after, #parcelas_integrais:before {  bottom: 100%;  left: 25%;  border: solid transparent;  content: " ";  height: 0;  width: 0;  position: absolute;  pointer-events: none;}
+#parcelas_integrais:after {  border-color: transparent;  border-bottom-color: #fff;  border-width: 10px;  margin-left: -20px;}
+#parcelas_integrais:before {  border-color: rgba(255, 255, 255, 0.35);border-bottom-color: transparent;border-width: 1px;margin-left: -1px;}
+ul.product_view_bandeiras > li > img {width: 55px;margin-left: 21px;margin-bottom: 10px;}
+.skip-link.skip-parcelas_integrais {cursor: pointer;}
+span.parcela {font-size: 18px;font-weight: bold;}
+.grid12-1 { width:6.33%; }
+.grid12-2 { width:14.66%; }
+.grid12-3 { width:23%; }
+.grid12-4 { width:31.33%; }
+.grid12-5 { width:39.67%; }
+.grid12-6 { width:48%; }
+.grid12-7 { width:56.33%; }
+.grid12-8 { width:64.67%; }
+.grid12-9 { width:73%; }
+.grid12-10  { width:81.33%; }
+.grid12-11  { width:89.67%; }
+.grid12-12,
+.grid-full  { width:98%; }
+.grid12-1, .grid12-2, .grid12-3, .grid12-4, .grid12-5, .grid12-6, .grid12-7, .grid12-8, .grid12-9, .grid12-10, .grid12-11, .grid12-12, .grid-full, .grid-col2-sidebar, .grid-col2-main {
+/* position: relative; */
+display: inline;
+float: left;
+margin-left: 1%;
+margin-right: 1%;
+}
+
+@media only screen and (max-width:759px) {
+/**
+ * Fusion Grid Layout - Mobile layout, 12 column grid, 15px gutters
+ * -------------------------------------------------------------------- */
+/* grid widths */
+  body .grid12-1,
+  body .grid12-2,
+  body .grid12-3,
+  body .grid12-4,
+  body .grid12-5,
+  body .grid12-6,
+  body .grid12-7,
+  body .grid12-8,
+  body .grid12-9,
+  body .grid12-10,
+  body .grid12-11,
+  body .grid12-12 {
+    clear: both;
+    width: 100%;
+  }
+
+}

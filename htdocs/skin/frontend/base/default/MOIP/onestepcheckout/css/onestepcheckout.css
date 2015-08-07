@@ -1,0 +1,310 @@
+/* cabeçalho */
+.moip-osc-checkoutcontainer .moip-osc-block-title h3 { margin: 0; padding: 5px; line-height: 1.50; }
+.moip-osc-page-tittle {margin-top: 43px;line-height: 10px;}
+.onestepcheckout-numbers { border-radius: 6px 6px 0 0;background-repeat:no-repeat;float: left;height: 35px;margin-right: 4px;width: 40px;background-position: 14px 6px;font-weight:normal;  padding-left:10px; padding-top:3px;}
+.onestepcheckout-numbers-1{background-image:url("../images/01.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers-2{background-image:url("../images/02.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers-3{background-image:url("../images/03.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers-4{background-image:url("../images/04.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers-5{background-image:url("../images/05.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers-6{background-image:url("../images/bkg-step-review.png") !important;background-repeat: no-repeat !important;}
+.onestepcheckout-numbers{background-position: 14px 6px !important;}
+
+/* bloco de conteudo para todos os passos */
+.moip-osc-block-content {
+padding: 15px;
+border: 1px solid;
+border-radius: 0 0 5px 5px;
+margin-bottom: 20px;
+}
+#review_collum > .moip-osc-block-content {
+	padding: 0;
+}
+/* valores para grids 12 */
+.grid12-1	{ width:6.33%; }
+.grid12-2	{ width:14.66%; }
+.grid12-3	{ width:23%; }
+.grid12-4	{ width:31.33%; }
+.grid12-5	{ width:39.67%; }
+.grid12-6	{ width:48%; }
+.grid12-7	{ width:56.33%; }
+.grid12-8	{ width:64.67%; }
+.grid12-9	{ width:73%; }
+.grid12-10	{ width:81.33%; }
+.grid12-11	{ width:89.67%; }
+.grid12-12,
+.grid-full	{ width:98%; }
+.grid12-1, .grid12-2, .grid12-3, .grid12-4, .grid12-5, .grid12-6, .grid12-7, .grid12-8, .grid12-9, .grid12-10, .grid12-11, .grid12-12, .grid-full, .grid-col2-sidebar, .grid-col2-main {
+/* position: relative; */
+display: inline;
+float: left;
+margin-left: 1%;
+margin-right: 1%;
+}
+
+@media only screen and (max-width:759px) {
+/**
+ * Fusion Grid Layout - Mobile layout, 12 column grid, 15px gutters
+ * -------------------------------------------------------------------- */
+/* grid widths */
+	body .grid12-1,
+	body .grid12-2,
+	body .grid12-3,
+	body .grid12-4,
+	body .grid12-5,
+	body .grid12-6,
+	body .grid12-7,
+	body .grid12-8,
+	body .grid12-9,
+	body .grid12-10,
+	body .grid12-11,
+	body .grid12-12 {
+	  clear: both;
+	  width: 100%;
+	}
+
+}
+.force-nodisplay{
+	display: none !important;
+}
+input.validation-passed{background-image:url("../images/passed-icon.jpg") !important;background-repeat: no-repeat !important; background-position: right !important;}
+input.validation-failed{background-image:url("../images/error-icon.jpg") !important;background-repeat: no-repeat !important; background-position: right !important;}
+input.radio.validation-failed {-webkit-appearance: none;background: none !important;border-radius: 100%;border: 4px solid #FF0000 !important;display: inline-block;height: 10px;margin-bottom: 0;position: relative;padding: 5px;width: 12px;}
+#advice-validate-one-required-by-name-debito_instituicao, #advice-validate-one-required-by-name-cartao_salvo {position: relative;min-width: 191px;}
+
+
+textarea#gift-message-whole-message {width: 250px;}
+.checkbox {z-index: 9;}
+
+
+
+/* form list */
+fieldset {border: 0;clear: both;}
+.form-list .field { float: left !important; width: 48% !important;margin-right: 2%;}
+.form-list .field.odd { margin-left: 5%; }
+.form-list .wide,
+.form-list .fields { width: 100%; clear: both; }
+.form-list label em { position: absolute; top: 0; right: 0; color: red; }
+.form-list .input-box { width: 93% !important; }
+.form-list .input-box input,
+.form-list .input-box select { width: 100% !important; border-radius: 3px; padding: 5px; }
+.form-list .input-box input[type="checkbox"],
+.form-list .input-box input[type="radio"] { width: auto !important; float: left; clear: none; margin-right: 5px; }
+.dados-pj { display: none }
+.customer-dob .dob-day,
+.customer-dob .dob-month { margin: 0; max-width: 35px !important; min-width: 35px !important; }
+.form-list .wide {float: left;clear: both;width: 102%;}
+.form-list .customer-dob .dob-year {width: 52px !important;margin: 0 !important;padding: 0 !important;float: left;min-width: 50px !important;}
+.form-list .customer-dob .dob-day, .form-list .customer-dob .dob-month {width: 35px  !important;padding: 0 !important;margin-right: 10px  !important;}
+.form-list .control label {float: none;width: 100% !important;}
+
+ul.erros_cadastro_valores {text-align: left;color: red;}
+h2.endereco_title, h3.como_comprar_title, h3.dados_pessoais {clear: both;}
+
+
+#loading-mask {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.5);
+left: 0px;
+min-height: 710px;
+display: none;
+top: 0px;
+}
+#loading-mask #loading_mask_loader {
+background: none repeat scroll 0 0 #fff;
+border: 1px solid #ccc;
+box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2);
+box-sizing: border-box;
+display: block;
+left: 42%;
+line-height: 20px;
+margin-top: 0;
+padding: 20px;
+position: absolute;
+text-align: center;
+top: 32%;
+width: 300px;
+right: 50%;
+}
+img.loading_img {margin: 0 auto;}
+img.Loading {
+margin: 0 auto;
+}
+button.no-button {
+padding: 0;
+background: 0;
+border: 0;
+text-decoration: underline;
+cursor: pointer;
+}
+.update_shipping,.update_payment { width: 100%; text-align: center; font-size: 14px; min-height: 115px; padding-top: 50px; }
+.sp-methods .form-list { padding-left: 0px !important; }
+#shipping_show {margin-top: 10px !important;float: left}
+.erro_cep{padding: 0 10px;font-weight: bold;}
+.com_cep {color: red;padding: 10px;}
+
+
+
+
+
+
+
+
+
+
+.checkout-onepage-index .col-main {width: 100% !important;}
+
+
+label.label_pf_pj {float: none;}
+
+h2{line-height: 1.50;}
+
+.dados-pj, .dados-titular {display: none;}
+.erro_frete, .erro_frete_sem_cep {display: none;}
+
+
+
+
+
+
+
+
+
+
+/* Css para estilo diferente no shipping */
+input.shipping_method_handle {
+float: left;
+margin: 5px;
+}
+
+#checkout-shipping-method-loadding > dd > ul > li {
+border-color: #ccc !important;
+border: 1px solid; border-radius: 4px;
+padding: 5px;
+}
+
+
+#checkout-shipping-method-loadding > dd > ul > li > label {
+width: 100%;
+}
+.sp-methods .price {
+font-weight: bold;
+}
+
+.sp-methods dd {
+margin: 3px 0 0px !important;
+}
+
+
+.image_shipping {
+width: 25%;
+float: none;
+}
+.moip-osc-checkoutcontainer .moip-osc-block-title h3 {
+margin: 0;
+padding: 5px;
+line-height: 1.5;
+font-size: 16px;
+}
+
+
+form-list .control label, .sp-methods dt label, #checkout-shipping-method-load .sp-methods dd label, #co-shipping-method-form .sp-methods dd label, .product-options ul.options-list label {
+width: 100% !important;
+
+}
+.alinha_form {
+min-height: 108px;
+}
+#criar_loga {
+min-height: 255px;
+height: 255px;
+}
+.discount-form {
+margin-top: 15px;
+padding-top: 15px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    float: left;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.btn-update-qty {cursor: pointer; float: right;}
+
+/*
+
+input[name="billing[firstname]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[firstname]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[firstname]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[firstname]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+
+input[name="billing[lastname]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[lastname]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[lastname]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+input[name="billing[lastname]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f007  "; color: #000 }
+
+
+input[name="billing[email]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f0e0  "; color: #000 }
+input[name="billing[email]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f0e0  "; color: #000 }
+input[name="billing[email]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f0e0  "; color: #000 }
+input[name="billing[email]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f0e0  "; color: #000 }
+
+input[name="billing[customer_password]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[customer_password]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[customer_password]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[customer_password]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+
+input[name="billing[confirm_password]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[confirm_password]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[confirm_password]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+input[name="billing[confirm_password]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f070  "; color: #000 }
+
+
+input[name="billing[taxvat]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f1ea  "; color: #000 }
+input[name="billing[taxvat]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f1ea  "; color: #000 }
+input[name="billing[taxvat]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f1ea  "; color: #000 }
+input[name="billing[taxvat]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f1ea  "; color: #000 }
+
+input[name="billing[telephone]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f10b  "; color: #000 }
+input[name="billing[telephone]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f10b  "; color: #000 }
+input[name="billing[telephone]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f10b  "; color: #000 }
+input[name="billing[telephone]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f10b  "; color: #000 }
+
+
+input[name="billing[postcode]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[postcode]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[postcode]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[postcode]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+
+input[name="billing[street][0]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][0]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][0]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][0]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+
+input[name="billing[street][1]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][1]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][1]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][1]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+
+input[name="billing[street][2]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][2]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][2]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][2]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+
+input[name="billing[street][3]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][3]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][3]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[street][3]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+
+
+
+input[name="billing[city]"]::-webkit-input-placeholder::before { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[city]"]::-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[city]"]:-ms-input-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+input[name="billing[city]"]::input:-moz-placeholder::before  { font-family: FontAwesome; content:"\f124  "; color: #000 }
+icones... placeholder */

@@ -1,0 +1,39 @@
+<?php $session = Mage::getSingleton('checkout/session'); ?>
+<?php $pgtoArraya = $session->getPgtoarry(); ?>
+<?php $result_decode = $session->getResult_decode(); ?>
+
+
+		<div class="method-type-payment">
+			<h3>Quase lá! Agora só falta pagar o boleto.</h3>
+		</div>
+		<div class="method-type-action">
+			<p>Você será redirecionado para o seu banco em <strong><span id="count">10</span>s</strong>, para concluir o pagamento</p>
+			<button type="button" title="Finalizar compra" class="button btn-checkout" onclick="window.location='<?php echo $this->getUrlAmbiente()."Instrucao.do?token=". $result_decode['token'] ?>'"><span><span>Ir ao Banco <i class="fa fa-arrow-right"></i></span></span></button>
+		</div>
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+				jQuery(document).ready(function(){
+					jQuery("#token").val("<?php echo $result_decode['token'] ?>");
+					var settings =
+						<?php echo $this->getJson($pgtoArraya); ?>
+					;
+					MoipWidget(settings);
+					var counter = 10;
+					setInterval(function() {
+					    counter--;
+					    if(counter < 0) {
+					        window.location = '<?php echo $this->getUrlAmbiente()."Instrucao.do?token=". $result_decode['token'] ?>';
+					    } else {
+					        document.getElementById("count").innerHTML = counter;
+					         }
+					}, 1000);
+
+				});
+				var sucesso = function(data){
+				}
+//]]>
+</script>

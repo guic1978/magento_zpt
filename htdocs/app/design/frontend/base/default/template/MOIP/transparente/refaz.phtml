@@ -1,0 +1,118 @@
+<?php $session = Mage::getSingleton('checkout/session'); ?>
+<?php
+	$z=0;
+	$api = Mage::getModel('transparente/api');
+	$dados = $session->getPgtoarry();
+?>
+<?php $client_array = $session->getClient_array(); ?>
+<?php $pgtoArray = $this->getOrder_dados($client_array); ?>
+<form id="refazercartao" method="POST" action='<?php echo Mage::getBaseUrl('web', true); ?>transparente/index/Repag/'>
+	<input type="hidden"  name="forma_de_pagamento" value="CartaoDeCredito" >
+			<div class="well">
+				<ul class="form-list">
+
+						<h3>Dados do Cartão</h3>
+
+					<li class="wide">
+						<label>Parcelas:</label>
+						<?php $pgtoArray = $this->getOrder_dados($client_array); ?>
+						<?php $order = Mage::getModel('sales/order')->loadByIncrementId($pgtoArray['id_transacao']);  ?>
+						<?php $parcelamento = $api->getParcelamento($order->getGrand_total()); ?>
+						<div class="input-box">
+							<select id="Parcelas" name="parcelas">
+								<option value="" select>Selecione as parcelas</option>
+								<?php $parcela_decode = json_decode($parcelamento,true);
+								foreach ($parcela_decode as $key => $value) {
+
+									if ($key <= Mage::getSingleton('transparente/standard')->getConfigData('nummaxparcelamax')) {
+
+											$juros = $parcela_decode[$key]['juros'];
+											$parcelas_result = $parcela_decode[$key]['parcela'];
+											$total_parcelado = $parcela_decode[$key]['total_parcelado'];
+											if($juros > 0)
+												$asterisco = '*';
+											else
+												$asterisco = '';
+											$parcelas[]= '<option value="'.$key.'">'.$key.'x de '.$parcelas_result.' no total de '.$total_parcelado.' '.$asterisco.'</option>';
+
+										}
+									}
+									 foreach ( $parcelas as $key => $value) { ?>
+									               		<?php echo $parcelas[$key]; ?>
+									               <?php } ?>
+							</select>
+						</div>
+					</li>
+					<li class="wide">
+
+							<label>Institui&ccedil;&atilde;o:</label>
+							<div class="input-box">
+								<select id="bandeira" name="bandeira">
+								  <option value="Visa">Visa</option>
+								  <option value="Mastercard">Mastercard</option>
+								  <option value="AmericanExpress">AmericanExpress</option>
+								  <option value="Hipercard">Hipercard</option>
+								  <option value="Diners">Diners</option>
+								</select>
+							</div>
+					</li>
+					<li class="wide">
+						<div>
+							<label>Numero do Cart&atilde;o:</label>
+								<div class="input-box">
+									<input type="text" id="Numero" name="Numero" value="" class="input-text" >
+								</div>
+						</div>
+						<div>
+							<label>CVV:</label>
+							<div class="input-box">
+								<input type="text" id="CodigoSeguranca" class="input-text" name="CodigoSeguranca" value="" size="4">
+							</div>
+						</div>
+					</li>
+					<li class="wide">
+						<label>Expira&ccedil;&atilde;o:</label>
+						<div class="input-box">
+							<input type="text" id="Expiracao" name="Expiracao_mes" value="<?php echo $dados['credito_expiracao_mes'] ?>"  onkeypress="return txtBoxFormat(this, '99', event);" maxlength="2" placeholder="Ex. 10/15"  size="2" class="input-text" >
+							<input type="text" id="Expiracao" name="Expiracao_ano" value="<?php echo $dados['credito_expiracao_ano'] ?>"  onkeypress="return txtBoxFormat(this, '99', event);" maxlength="2" placeholder="Ex. 10/15"  size="2" class="input-text" >
+						</div>
+					</li>
+					<li class="wide">
+						<h3>Dados do Títular do Cartão</h3>
+					</li>
+					<li class="wide">
+						<label>Portador:</label>
+						<div class="input-box">
+							<input type="text" id="Portador" name="Portador" value="<?php echo $dados['credito_portador_nome'] ?>" class="input-text" >
+						</div>
+					</li>
+					<li class="wide">
+						<label>CPF:</label>
+						<div class="input-box">
+							<input type="text" id="CPF" name="CPF" value="<?php echo $dados['credito_portador_cpf'] ?>" class="input-text" onkeypress="return txtBoxFormat(this, '99999999999', event);" maxlength="11">
+						</div>
+					</li>
+					<li class="wide">
+						<label>Data Nascimento:</label>
+						<div class="input-box">
+							<input type="text" id="DataNascimento" value="<?php echo date('d/m/Y', strtotime($dados['credito_portador_nascimento'])) ?>"  name="DataNascimento" onkeypress="return txtBoxFormat(this, '99/99/9999', event);" maxlength="10" placeholder="Ex. 10/10/1985" class="input-text" ><br>
+						</div>
+					</li>
+					<li class="wide">
+						<label>Telefone:</label>
+						<div class="input-box">
+							<input type="text" id="Telefone" name="Telefone" onkeypress="return txtBoxFormat(this, '(99)9999-9999', event);" placeholder="Ex. (11)9999-9999" maxlength="14" class="input-text" value="<?php echo $dados['credito_portador_DDD'] ?><?php echo $dados['credito_portador_telefone'] ?>" ><br>
+						</div>
+					</li>
+					<li class="wide">
+						<button id="sendToTransparente2" class="button btn-checkout " onclick="jQuery('#loading-mask').show();jQuery('.repeat_cartao').hide('slow');"><span><span>Pagar Agora</span></span></button>
+					</li>
+				</ul>
+			</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+jQuery("#bandeira option[value=<?php echo $dados['credito_instituicao'] ?>]").attr('selected','selected');
+jQuery("#Parcelas option[value=<?php echo $dados['credito_parcelamento'] ?>]").attr('selected','selected');
+//]]>
+</script>

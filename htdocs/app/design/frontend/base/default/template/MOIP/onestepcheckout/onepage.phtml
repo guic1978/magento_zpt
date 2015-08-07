@@ -1,0 +1,553 @@
+<script type="text/javascript">countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+<script type="text/javascript">
+//<![CDATA[
+
+
+var message_payment = "Por Favor, selecione um meio de pagamento.";
+var message_ship = "Por favor, selecione um Meio de Envio";
+var updatepaymenttypeurl = "<?php echo Mage::getUrl('onestepcheckout/index/updatepaymenttype')?>";
+var updatepaymentmethodurl = "<?php echo Mage::getUrl('onestepcheckout/index/updatepaymentmethod')?>";
+var updatecouponurl = "<?php echo Mage::getUrl('onestepcheckout/index/updatecoupon')?>";
+var updateqtyurl = "<?php echo Mage::getUrl('onestepcheckout/index/updateqty')?>";
+var removeproducturl = "<?php echo Mage::getUrl('onestepcheckout/index/removeproduct')?>";
+var updateshippingmethodurl = "<?php echo Mage::getUrl('onestepcheckout/index/updateshippingmethod') ?>";
+var updatereviewurl = "<?php echo Mage::getUrl('onestepcheckout/index/updatereviewmethod') ?>";
+var createaccounturl = "<?php echo Mage::getUrl('onestepcheckout/index/CreataAccountInit') ?>";
+var buscacepurl = "<?php echo Mage::getUrl('Transparente/Standard/buscaCep') ?>";
+
+function ProxCamp(fields) {
+	fields.value=soNumeros(fields.value)
+	if (fields.value.length == fields.maxLength) {
+			for (var i = 0; i < fields.form.length; i++) {
+				if (fields.form[i] == fields && fields.form[(i + 1)] && fields.form[(i + 1)].type != "hidden") {
+					fields.form[(i + 1)].focus();
+				break;
+			}
+		}
+	}
+}
+function soNumeros(v){
+    return v.replace(/\D/g,"")
+}
+function has_default_billing()
+{
+	<?php if (Mage::getSingleton('customer/session')->getCustomer()->getDefaultBilling()): ?>
+		return 1;
+	<?php else: ?>
+		return 0;
+	<?php endif ?>
+}
+function getval(sel) {
+	if (sel.value == 1){
+		jQuery('.dados-pj').slideUp();
+		jQuery('.dados-pj input:not([type=checkbox])').removeClass('required-entry');
+	}else{
+		jQuery('.dados-pj').slideDown();
+		jQuery('.dados-pj input:not([type=checkbox])').addClass('required-entry');
+	}
+}
+function marcar_isento() {
+	jQuery("#insestadual").val("Isento");
+}
+function seleciona_cep_busca(valor) {
+	var cep_buscado = jQuery('.'+valor.className).val();
+	jQuery("#billing\\:postcode").val(cep_buscado);
+	buscarEndereco('billing');
+	jQuery.fancybox.close();
+	jQuery("#billing\\:street2").focus();
+}
+function busca_endereco_correios(){
+	var url = buscacepurl+'meio/buscaend/logradouro/' + jQuery("#endereco_de_consulta").val().replace(/[^a-zA-ZãéíóúãõàèìòùÀÈÌÙÒÃÂâÁÉÍÓÚ ]/g, '') +'/busca_uf/'+jQuery("#busca_uf").val();
+		jQuery.getJSON(url, function (result) {
+			for (var i = 0; i < result.length; i++) {
+			  jQuery(".resultados_get_busca").append('<label class="busca_end_label"><div class="seletec_result_end"><input type="radio" value="'+result[i].retorno.cep+'" class="cep_encontrado_'+result[i].retorno.cep+'" onclick="javascript:seleciona_cep_busca(this);"></div><div class="dados_result_end"><span class="cidade">'+result[i].retorno.cidade + ' - ' + result[i].retorno.uf+'</span><span class="cep">'+result[i].retorno.cep+'</span><span class="rua">'+result[i].retorno.rua+'</span></div></label>');
+			}
+			jQuery("#searchForm").hide();
+			jQuery("#buscar_nos_correios").show();
+	});
+};
+
+function buscarEndereco(whatform) {
+	if (whatform == "billing") {
+		var campos = {
+			postcode: document.getElementById('billing:postcode'),
+			street_1: document.getElementById('billing:street1'),
+			street_4: document.getElementById('billing:street4'),
+			city: document.getElementById('billing:city'),
+			region: document.getElementById('billing:region_id')
+		};
+
+	}
+	if (whatform == "shipping") {
+		var campos = {
+			postcode: document.getElementById('shipping:postcode'),
+			street_1: document.getElementById('shipping:street1'),
+			street_4: document.getElementById('shipping:street4'),
+			city: document.getElementById('shipping:city'),
+			region: document.getElementById('shipping:region_id'),
+		};
+
+	}
+	if (whatform == "register") {
+		var campos = {
+			postcode: document.getElementById('postcode'),
+			street_1: document.getElementById('street_1'),
+			street_4: document.getElementById('street_4'),
+			city: document.getElementById('city'),
+			region: document.getElementById('region_id')
+		};
+	}
+
+	jQuery.ajax({
+		type:'GET',
+		url:  buscacepurl+'meio/cep/cep/' + campos.postcode.value.replace(/\+/g, ''),
+
+		beforeSend: function(data){
+			jQuery(campos.street_1).attr('placeholder', 'Buscando Endereço');
+			jQuery(campos.street_4).attr('placeholder', 'Buscando Endereço');
+			jQuery(campos.city).attr('placeholder', 'Buscando Endereço');
+		},
+
+		success: function(data){
+			jQuery('#loading-mask').fadeOut();
+			if(data){
+				var addressData = jQuery.parseJSON(data);
+
+				jQuery(campos.street_1).val(addressData.logradouro);
+				jQuery(campos.street_4).val(addressData.bairro);
+				jQuery(campos.city).val(addressData.cidade);
+				jQuery(campos.region).val(addressData.ufid);
+				if (campos.postcode != "" && campos.postcode != ".")
+				{
+					updateShippingType(campos.postcode);
+				};
+				jQuery("#billing\\:street2").focus();
+			} else {
+				jQuery(campos.street_1).attr('placeholder', 'Rua');
+				jQuery(campos.street_4).attr('placeholder', 'N.º');
+				jQuery(campos.city).attr('placeholder', 'Cidade');
+				if (campos.postcode != "" && campos.postcode != ".")
+				{
+					updateShippingType(campos.postcode);
+				};
+			}
+		},
+		error: function(){
+			jQuery(campos.street_1).val("");
+			jQuery(campos.street_4).val("");
+			jQuery(campos.city).val("");
+			jQuery(campos.region).val("");
+			if (campos.postcode != "" && campos.postcode != ".")
+			{
+				updateShippingType(campos.postcode);
+			};
+		},
+	});
+};
+function createAccount () {
+	var formAccount = new VarienForm('onestep_form', true);
+	jQuery('#loading-mask').show();
+
+	if(formAccount.validator.validate())
+	{
+
+	}
+	 else {
+		jQuery('#loading-mask').hide();
+	}
+
+}
+function showcreateAccount(){
+	jQuery("#cadastrar").removeClass('force-nodisplay');
+	jQuery("#cadastrar").show('slow');
+	jQuery("#criar_loga").hide();
+}
+function updateShippingMethod() {
+	var msg = '';
+	if(document.getElementById('billing:postcode') != "" && document.getElementById('billing:postcode') != "." ){
+		jQuery.ajax({
+			type: "POST",
+			url: updateshippingmethodurl,
+
+			data: jQuery("#onestep_form").serialize(),
+			beforeSend: function(){
+
+				jQuery('.validation-advice').hide();
+				jQuery("input[name='shipping_method']").removeClass('validation-failed');
+				jQuery('#checkout-payment-method-load').html('<div class="update_payment">Calculando valor do pagamento.<img class="Loading" alt="Loading..." src="<?php echo $this->getSkinUrl("MOIP/onestepcheckout/images/ajax-loader-tr.gif")?>"></div>');
+				updatePaymentAssociated();
+
+			},
+			success: function(msg) {
+
+
+				jQuery('#checkout-review-table-wrapper').html(msg);
+				jQuery('#checkout-review-table-wrapper').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+
+
+			},
+			fail:function() {
+				updateShippingMethod();
+			},
+			always: function() {
+
+			},
+		})
+
+	}
+};
+function updateShippingType(){
+	var msg = '';
+	<?php if(!Mage::helper('onestepcheckout')->onlyProductDownloadable()):?>
+		jQuery.ajax({
+			type: "POST",
+			url: "<?php echo Mage::getUrl('onestepcheckout/index/updateshippingtype')?>",
+			data:jQuery("#onestep_form").serialize(),
+			beforeSend: function(){
+				jQuery('#message-box').html('');
+				jQuery('#checkout-shipping-method-load').html('<div class="update_shipping">Calculando Frete.<img class="Loading" alt="Loading..." src="<?php echo $this->getSkinUrl("MOIP/onestepcheckout/images/ajax-loader-tr.gif")?>"></div>');
+			},
+			success: function(msg){
+					jQuery('#checkout-shipping-method-load').html(msg);
+					jQuery('#checkout-shipping-method-load').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+				},
+			error: function(){
+			 	jQuery('#checkout-shipping-method-load').html("Não foi possível cotar o seu frete, por favor recarrege a página ou entre em contato com nossa loja.");
+			},
+		});
+	<?php endif?>
+}
+function updatePaymentAssociated() {
+		var msg = '';
+		jQuery.ajax({
+			type: "POST",
+			url: updatepaymenttypeurl,
+			data: jQuery("#onestep_form").serialize(),
+			beforeSend: function(data){
+				updatePaymentMethod();
+			},
+			success: function(msg) {
+				jQuery('#checkout-payment-method-load').html(msg);
+				jQuery('#checkout-payment-method-load').find("script").each(function(i) {
+			                    eval(jQuery(this).text());
+			                });
+			},
+		});
+}
+function updateClear() {
+		jQuery.ajax({
+			async: false,
+			type: "POST",
+			url: "<?php echo Mage::getUrl('onestepcheckout/index/updateshippingtype')?>",
+			data:jQuery("#onestep_form").serialize(),
+			beforeSend: function(){
+
+			},
+			success: function(msg){
+					jQuery('#checkout-shipping-method-load').html(msg);
+					jQuery('#checkout-shipping-method-load').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+				},
+			error: function(){
+			 	jQuery('#checkout-shipping-method-load').html("Não foi possível cotar o seu frete, por favor recarrege a página ou entre em contato com nossa loja.");
+			},
+		});
+}
+function updatePaymentMethod() {
+	var msg = '';
+	jQuery.ajax({
+		url: updatepaymentmethodurl,
+		type: "POST",
+
+		data: jQuery("#onestep_form").serialize(),
+		success: function(msg) {
+
+				jQuery('#checkout-review-table-wrapper').html(msg);
+
+				jQuery('#checkout-review-table-wrapper').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+		},
+	});
+
+};
+function updateCoupon() {
+		jQuery(".cupom_tem").hide();
+		jQuery("#loading_mask_loader").show();
+		jQuery.ajax({
+			url: updatecouponurl,
+			type: "POST",
+			data: jQuery("#onestep_form").serialize(),
+		})
+		.done(function(msg) {
+			jQuery.ajax({
+				url: updatepaymenttypeurl,
+				type: "POST",
+				data: jQuery("#onestep_form").serialize(),
+			});
+			jQuery('#checkout-payment-method-load').html();
+			str = jQuery.parseJSON(msg);
+			jQuery('.discount-form').html(str.coupon);
+			jQuery('#checkout-review-table-wrapper').html(str.view);
+			jQuery('#checkout-review-table-wrapper').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+
+		})
+		.fail(function() {
+			updateCoupon(code, isremove);
+		})
+		.always(function() {
+			updateShippingType(document.getElementById('billing:postcode'));
+		});
+};
+function removeProduct(id) {
+	hasgift = (typeof(jQuery('#allow-gift-message-container')) != 'undefined') ? 1 : 0;
+
+	jQuery.ajax({
+		type: "POST",
+		url: removeproducturl,
+		data: "id=" + id + '&hasgiftbox=' + hasgift,
+		beforeSend: function(){
+			jQuery('#message-box').html('');
+		},
+		success: function(msg) {
+			jQuery.ajax({
+				type: "POST",
+				url: updatepaymenttypeurl,
+				data: jQuery("#onestep_form").serialize(),
+				success: function(msg) {
+					jQuery('#checkout-payment-method-load').html(msg);
+				}
+			});
+			str = jQuery.parseJSON(msg);
+			if (str.view.search("<script") != 0) {
+				if (str.giftbox) {
+					jQuery('#checkout-review-table-wrappe').html(str.view);
+					jQuery('#onepage-checkout-shipping-method-additional-load').html(str.giftbox);
+				} else {
+					jQuery('#checkout-review-table-wrapper').html(str.view);
+					jQuery('#checkout-review-table-wrapper').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+				}
+			} else {
+				jQuery('#checkout-review-table-wrapper').append(str.view);
+				jQuery('#checkout-review-table-wrapper').find("script").each(function(i) {
+				                    eval(jQuery(this).text());
+				                });
+			}
+		}
+	});
+	updateShippingType(document.getElementById('billing:postcode'));
+}
+function logined()
+{
+	<?php	if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
+
+	return 1;
+	<?php else: ?>
+	return 0;
+	<?php endif ?>
+}
+function hasaddress(){
+	<?php if(count(Mage::getSingleton('customer/session')->getCustomer()->getAddresses())): ?>
+	updateShippingType(document.getElementById('billing:postcode'));
+	return 1;
+	<?php else:?>
+	return 0;
+	<?php endif; ?>
+}
+
+function removeProductId(product_id){
+	if(confirm("<?php echo $this->__('Tem certeza que deseja remover o produto?')?>")){
+		removeProduct(product_id);
+	}
+}
+function updateEmailmsg(val){
+	jQuery.ajax({
+			async:true,
+			type: "POST",
+			url: "<?php echo Mage::getUrl('onestepcheckout/index/updateemailmsg')?>",
+			data:"email="+val,
+			beforeSend: function(){
+				jQuery('#message-box').html('');
+			},
+			success: function(msg){
+				var error="<div id=\"message-box\"><div  class=\"validation-advice\" style=\"position:relative;\">Email já cadastrado, por favor <a href=\"#\" data-toggle=\"modal\" data-target=\"#loginModel\"  id=\"loginbox\">Clique aqui e faça o login</a></div></div>";
+				if(msg==0){
+					jQuery('#billing\\:email').after(error);
+					jQuery('#message-box').html(error);
+				}else{
+					if(logined()!=1){
+						jQuery('#message-box').html('');
+					}
+					jQuery('#billing\\:email').removeClass('validation-failed');
+				}
+			}
+		});
+}
+function updateQty(){
+	jQuery('#loading-mask').show();
+
+            jQuery.ajax({
+                url: updateqtyurl,
+                data:  jQuery("#onestep_form").serialize(),
+
+
+                    success: function(html){
+
+                        	location.reload();
+
+                    }
+            });
+
+}
+function inbtn(id){
+	removeElemento = "#up_"+id;
+
+			jQuery(removeElemento).addClass('btn-update-qty-visible');
+}
+
+jQuery(function () {
+
+	  jQuery('#billing\\:taxvat').mask("000.000.000-00", {placeholder: "___.___.___-__"});
+	  jQuery('#shipping\\:taxvat').mask("000.000.000-00", {placeholder: "___.___.___-__"});
+	  jQuery('#taxvat').mask("000.000.000-00", {placeholder: "___.___.___-__"});
+
+	  jQuery('#cnpj').mask("00.000.000-0000-00", {placeholder: "__.___.___-____-__"});
+	  jQuery('#billing\\:postcode').mask("00000-000", {placeholder: "_____-___"});
+	  jQuery('#shipping\\:postcode').mask("00000-000", {placeholder: "_____-___"});
+	  jQuery('#postcode').mask("00000-000", {placeholder: "_____-___"});
+	  jQuery('#zip').mask("00000-000", {placeholder: "_____-___"});
+	  jQuery('#billing\\:fax').mask("(00)0000-0000Z", {placeholder: "(__)____-_____",translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+	  jQuery('#billing\\:telephone').mask("(00)0000-0000Z", {placeholder: "(__)____-_____",translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+	  jQuery('#shipping\\:telephone').mask("(00)0000-0000Z", {placeholder: "(__)____-_____",translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+	  jQuery('#shipping\\:fax').mask("(00)0000-0000Z", {placeholder: "(__)____-_____",translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+	  jQuery('#credito_portador_telefone').mask("(00)0000-0000Z", {placeholder: "(__)____-_____",translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+
+	jQuery('.btn-checkout').bind("click",function(e){
+		jQuery(".btn-checkout").attr("disabled", "disabled");
+		jQuery(".btn-checkout").hide();
+		jQuery('#co-payment-form').show();
+		var form = new VarienForm('onestep_form', true);
+		if(!form.validator.validate())	{
+			var logic= false;
+			if(logined()!=1){
+				val=jQuery('#billing\\:email').val();
+				emailvalidated=Validation.get('IsEmpty').test(val) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(val);
+				if(val!="" && emailvalidated){
+					updateEmailmsg(val);
+				}
+			}
+
+		} else 	{
+			var logic= true;
+			if(logined()!=1){
+				var msgerror=1;
+				val=jQuery('#billing\\:email').val();
+				emailvalidated=Validation.get('IsEmpty').test(val) || /^([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9,!\#\$%&'\*\+\/=\?\^_`\{\|\}~-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*@([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z0-9-]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*\.(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]){2,})$/i.test(val);
+				if(val!="" && emailvalidated){
+					msgerror=updateEmailmsg(val);
+				}
+				if(msgerror==0){
+					return false;
+				}
+
+			}
+		}
+		if(logic){
+			jQuery('#loading-mask').show();
+			jQuery('#onestep_form').submit();
+			return true;
+		} else {
+
+			jQuery(".erros_cadastro_valores").html("");
+			var erro_dado = [];
+			var j = 0;
+			jQuery(".validation-failed").each(function() {
+				j++;
+				temp_erro = jQuery(this).attr("title");
+				if(jQuery.inArray(temp_erro, erro_dado) != 1){
+					erro_dado[j] = jQuery(this).attr("title");
+					jQuery(".erros_cadastro_valores").append('<li>'+erro_dado[j]+'</li>');
+				}
+
+
+			});
+			if(jQuery.inArray("Meio de Envio", erro_dado) == 1){
+				jQuery('#checkout-shipping-method-loadding').append('<dt><div class="validation-advice" id="advice-required-entry_shipping" style="position:relative;">Você deverá selecionar uma forma de envio.</div></dt>');
+			}
+			jQuery('#ErrosFinalizacao').modal('toggle');
+			jQuery('.validation-advice').delay(3000).fadeOut("slow");
+			jQuery(".btn-checkout").removeAttr("disabled");
+			jQuery(".btn-checkout").show("slow");
+			return false;
+		}
+	});
+	jQuery('#onestep_form :input').blur(function() {
+		if(jQuery(this).attr('id') != "billing:day" && jQuery(this).attr('id') != "billing:month"){
+			Validation.validate(jQuery(this).attr('id'));
+		}
+	});
+	jQuery("#billing\\:day").attr('maxlength', '2');
+	jQuery("#billing\\:day").attr('onkeyup', 'ProxCamp(this)');
+	jQuery("#billing\\:month").attr('maxlength', '2');
+	jQuery("#billing\\:month").attr('onkeyup', 'ProxCamp(this)');
+	jQuery("#billing\\:year").attr('maxlength', '4');
+	jQuery("#billing\\:year").attr('onkeyup', 'ProxCamp(this)');
+	if (!logined()) {
+		jQuery('#allow-gift-message-container').clearForm();
+	}
+	jQuery('[id="billing:postcode"]').addClass('required-entry');
+	jQuery('[id="shipping:postcode"]').addClass('required-entry');
+	jQuery('[id="billing:region_id"]').addClass('validate-select');
+	jQuery('[id="shipping:region_id"]').addClass('validate-select');
+
+	if (logined()) {
+		if (!has_default_billing()) {
+			jQuery('#billing-new-address-form').clearForm();
+			jQuery('#shipping-new-address-form').clearForm();
+		}
+	} else {
+		jQuery('#billing-new-address-form').clearForm();
+		jQuery('#shipping-new-address-form').clearForm();
+	}
+	<?php
+		$islogin=0;
+		if(Mage::getSingleton('customer/session')->isLoggedIn()){
+			$islogin=1;
+		}
+	?>
+
+	<?php if(!Mage::helper('onestepcheckout')->onlyProductDownloadable()):?>
+			jQuery('#credito_numero_moip').focus(function() {
+				if(!jQuery("input[name='shipping_method']:checked").val()){
+					jQuery('.form-list.cartao').html("Desculpe, Selecione primeiramente a Forma de Envio no passo 2.");
+				}
+			});
+	<?php endif?>
+});
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+    var accordion = new Accordion('checkoutSteps', '.step-title', true);
+    <?php if($this->getActiveStep()): ?>
+    accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+    <?php endif ?>
+    var checkout = new Checkout(accordion,{
+        progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+        review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+        saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+    );
+//]]>
+</script>

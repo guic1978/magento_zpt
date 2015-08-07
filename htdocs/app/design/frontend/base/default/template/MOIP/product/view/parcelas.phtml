@@ -1,0 +1,54 @@
+<?php    $_product = $this->getProduct(); ?>
+<?php $price =  $_product->getFinalPrice(); ?>
+<?php $parcial =  $this->getParcelamento($price, 'reduzido'); ?>
+<?php $integral = $this->getParcelamento($price, 'integral'); ?>
+<?php if($parcial): ?>
+	<div class="price-box">
+		<div class="parcela-price">
+			<span class="parcela-label">Parcele até em</span>
+			<span class="parcela">
+				<?php echo $this->getParcelamento($price, 'reduzido'); ?>
+
+			</span>
+			 <a href="#" data-target-element="#parcelas_integrais" class="skip-link skip-parcelas_integrais">
+					ver parcelas
+			</a>
+		</div>
+	</div>
+<?php endif ?>
+<?php if($integral): ?>
+	<div id="parcelas_integrais" class="skip-content">
+		<h3>Cartão de Crédito:</h3>
+		<div class="grid12-4">
+			<ul class="product_view_bandeiras hide-below-768">
+				<li>
+					<img src="<?php echo $this->getVisaImage(); ?>" id="Moip_Visa" alt="Visa" border="0">
+				</li>
+				<li>
+					<img src="<?php echo $this->getMastercardImage(); ?>"  id="Moip_Mastercard" alt="Mastercard" border="0" >
+				</li>
+				<li>
+					<img src="<?php echo $this->getAmericanExpressImage(); ?>"  id="Moip_AmericanExpress"  alt="AmericanExpress" border="0" >
+				</li>
+				<li>
+					<img src="<?php echo $this->getDinersImage(); ?>" id="Moip_Diners" alt="Diners" border="0" >
+				</li>
+				<li>
+					<img src="<?php echo $this->getHipercardImage(); ?>" id="Moip_Hipercard" alt="Hipercard" border="0"  >
+				</li>
+			</ul>
+		</div>
+		<div class="grid12-8">
+			<?php $_count = count($integral); ?>
+			<?php if($_count > 3 ) :?>
+				<ul id="parcelamento_integral" class="bullet">
+					<?php foreach ($integral as $key => $value): ?>
+						<li><?php echo $value; ?></li>
+					<?php endforeach ?>
+				</ul>
+			<?php endif ?>
+		</div>
+
+	</div>
+<?php endif ?>
+<script type="text/javascript">decorateList('parcelamento_integral')</script>

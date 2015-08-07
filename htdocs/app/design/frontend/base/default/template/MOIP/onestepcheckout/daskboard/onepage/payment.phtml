@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<script type="text/javascript">
+//<![CDATA[
+    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl("checkout/onepage/savePayment") ?>');
+//]]>
+</script>
+<div  id="co-payment-form">
+    <fieldset id="checkout-payment-method-load">
+        <?php echo $this->getChildHtml('methods') ?>
+    </fieldset>
+
+
+
+</div
+<div class="buttons-set">
+                <?php $islogin=0; if(Mage::getSingleton('customer/session')->isLoggedIn()) $islogin=1; ?>
+                <?php if(Mage::getStoreConfig('onestepcheckout/layout/page_layout')==5 ){
+                    if(!$islogin){
+                        $notenable = 1;
+                    } else{
+                        $notenable = "";
+                    }
+                } else {
+                        $notenable = "";
+                }
+
+                ?>
+                    <?php if(!$notenable): ?>
+
+
+                      <div id="checkout-review-terms">
+                            <?php   if(Mage::getStoreConfig('onestepcheckout/modaluse/termos')):?>
+                                <div class="onestepcheckout-enable-terms" style="postion:relative;">
+                                    <ul class="form-list">
+                                        <li  class="control">
+                                             <input class="required-entry checkbox" type="checkbox" id="id_accept_terms" name="accept_terms" value="1" checked="checked" s />
+                                            <label for="termos"><?php echo $this->__('Eu aceito o');?> <a id="onestepcheckout-toc-link"  data-toggle="modal" data-target="#termos_modal"  href="#"><?php echo $this->__('Contrato de compra e os Termos de uso do site.');?></a></label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                       <?php if(Mage::getStoreConfig('onestepcheckout/addfield/usenews')==1):?>
+                            <?php if(Mage::helper('onestepcheckout')->issubscribed()):?>
+                                <ul class="form-list">
+                                    <li  class="control">
+                                        <input type="checkbox" name="subscribe_newsletter" value="0" title="<?php echo $this->__('Receber novidades') ?>" id="subscribe_newsletter" class="checkbox"> <label for="subscribe_newsletter"><?php echo $this->__('Receber novidades') ?></label>
+                                    </li>
+                                </ul>
+                            <?php endif?>
+                        <?php endif ?>
+
+                        <?php if(Mage::getStoreConfig('onestepcheckout/addfield/usenews')==2):?>
+                            <?php if(Mage::helper('onestepcheckout')->issubscribed()):?>
+                                <ul class="form-list">
+                                    <li  class="control">
+                                        <input type="checkbox" name="subscribe_newsletter"  value="1" checked="checked" title="<?php echo $this->__('Receber novidades') ?>" id="subscribe_newsletter" class="checkbox"> <label for="subscribe_newsletter" style="float:none;"><?php echo $this->__('Receber novidades') ?></label>
+                                    </li>
+                                </ul>
+                            <?php endif?>
+                        <?php endif?>
+
+
+
+
+                            <div style="float: right;" id="onestepcheckout_place_order_button">
+                                <button type="button" title="<?php echo $this->__('Place Order') ?>" class="button btn-checkout" id="checkout-onepage-buttom">
+                                    <span><span><?php echo $this->__('Place Order') ?> <i class="fa fa-arrow-right"></i></span></span></button>
+                            </div>
+
+                        <?php if(Mage::getStoreConfig('onestepcheckout/modaluse/use_secure')){ ?>
+                        <div>
+                            <a id="store_secure" data-toggle="modal" data-target="#store_secure_content">
+                                <span class="secure_store"><img src="<?php echo $this->getSkinUrl('MOIP/onestepcheckout/images/loja_segura.jpg') ?>" alt="<?php echo $this->__('Loja Segura, Saiba mais') ?>" title="<?php echo $this->__('Loja Segura, Saiba mais...') ?>" class="v-middle" /> </span>
+                            </a>
+                        </div>
+                        <?php } ?>
+
+
+
+                        <?php if(Mage::helper('onestepcheckout')->showComment()):?>
+                            <div class="onestepcheckout-comments">
+                                <label for="id_comments"><?php echo $this->__('Comments');?></label><br/>
+                                <textarea id="id_comments" name="onestepcheckout_comments" cols="40" rows="4"></textarea>
+                            </div>
+                        <?php endif;?>
+
+                <?php endif; ?>
+</div>
+
+<div class="tool-tip" id="payment-tool-tip" style="display:none;">
+    <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a></div>
+    <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+    function toggleToolTip(event){
+        if($('payment-tool-tip')){
+            $('payment-tool-tip').setStyle({
+                top: (Event.pointerY(event)-560)+'px'//,
+            })
+            $('payment-tool-tip').toggle();
+        }
+        Event.stop(event);
+    }
+    if($('payment-tool-tip-close')){
+        Event.observe($('payment-tool-tip-close'), 'click', toggleToolTip);
+    }
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+    payment.currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode() ?>";
+	payment.initWhatIsCvvListeners();
+//]]>
+</script>
+

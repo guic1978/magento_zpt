@@ -1,0 +1,74 @@
+ul.form-list{clear:both;}
+ul.form-list .wide > div.input-box > select{width: 100% !important;}
+ul.form-list .wide.cc-cvv > div{display: block;float: left;}
+ul.form-list .wide.cc-cvv > div.cc{width: 60% !important;}
+ul.form-list .wide.cc-cvv > div.cvv{width: 20% !important;margin-left: 10% !important;}
+ul.form-list .wide.cc-validade > div > select{ margin: 0 !important;width: 35% !important;margin-left: 5% !important;float: left;}
+ul.form-list .wide.cc-validade > div > select#credito_expiracao_mes{margin: 0 !important;}
+
+ul.form-list.dados-titular > li > label{clear: none !important; width: 105px;float: left !important;padding-top: 5px;}
+ul.form-list.dados-titular > li > div{ width: 50% !important;clear: none !important; float: left;}
+
+ul.inline{display: block;clear:both;max-width: 300px;}
+ul.inline li{float: left;width: 100%;margin-right: 2%; text-align: center;}
+ul.inline li img{width: 25%; height: auto;float: left; display: block; margin-bottom: 5px;}
+ul.inline li.transparente-payment-method-line img{margin-left: 10px;}
+
+.transparente-payment-method-content{display: none;clear: both; width: 1005;}
+
+ul.inline.input-switcher-4 > li{width: 23%;float: left;text-align: center;}
+ul.inline.input-switcher-5 > li {width: 12%;cursor: pointer;opacity: 0.4;}
+ul.inline.input-switcher-4 > li img{width: 100%;float: none;}
+ul.inline.input-switcher-5 > li img{width: 100%;float: none;}
+
+.tooltip-transparente-handler{position: relative !important;}
+.tooltip-transparente{display: none;position: absolute; right: 0px;top: 100%;background: #cccccc;padding: 20px;border-radius: 10px;min-width:  245px;box-shadow: 0 0 10px #000;z-index:999;}
+.tooltip-transparente-handler:hover .tooltip-transparente{display: block;}
+.span3.method-image > img {float: right;width: 100%;}
+#checkoutmoip > div {margin-right: 10px;clear: both;}
+.chamada {float: left; font-weight: bold;}
+.method-price-title {float: right;}
+.resume {float: left;}
+
+#transparente-boleto > div{float: left;width:70%;}
+#transparente-boleto > div.method-image{width: 25%;margin-right:5%}
+.transparente-payment-method-content, .transparente-payment-method-content p, .transparente-payment-method-content div, .transparente-payment-method-content *{text-align: left;}
+
+.transparente-payment-method-line > input{float: left;margin-top: 15px;}
+
+li > .middle-method{margin-left: 10px; display:block; float: left;width: 45%;text-align: left;}
+li > .method-price{float:left; display:block;width: 10%;margin-left:10px}
+
+.transparente-payment-method-content .form-list label{float:left !important;}
+
+#formcli{clear: both;}
+li.cofre {
+width: 100%;
+clear: both;
+float: left;
+border-bottom: 1px solid #ccc;
+padding-bottom: 10px;
+}
+.image_cofre {
+width: 30%;
+float: left;
+margin-right: 5%;
+}
+.image_cofre > img{
+	width: 70%;
+	float: left;
+	padding: 10%;
+}
+.cofre_number {
+width: 55%;
+float: left;
+}
+
+.radio_cofre {
+float: left;
+width: 10%;
+}
+input#cartao_salvo {
+margin-top: 15px;
+margin-left: 5px;
+}
